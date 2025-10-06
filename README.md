@@ -4,7 +4,7 @@ This archive contains processed files and scripts associated with **Rodriguez et
 
 The repository includes data derived from genome-wide sequencing and microarray analysis, as well as code used for downstream analyses and for generating the figures presented in the publication.
 
-The raw ChIP-sequencing and DNA methylation array data reported in this study have been deposited in the GEO under accession numbers GSE227793 and GSE291249, respectively
+The raw ChIP-sequencing and DNA methylation array data reported in this study have been deposited in the GEO under accession numbers GSE227793 and GSE291249, respectively.
 
 ## ChIP-seq data analysis 
 
