@@ -6,4 +6,18 @@ The repository includes data derived from genome-wide sequencing and microarray 
 
 The raw ChIP-sequencing and DNA methylation array data reported in this study have been deposited in the GEO under accession numbers GSE227793 and GSE291249, respectively
 
-## 
+## ChIP-seq data analysis 
+
+*Basic alignment and peak calling*
+
+*Definition of regulatory regions across each sample type*
+
+## Definition of enriched H3K27ac regions across sample groups
+
+## RNA-seq analysis of differential gene expression
+
+## RT-qPCR and ChIP-qPCR
+
+## DNAm EPICv2 array analysis
+
+## Transcription Factor Enrichment analysis
