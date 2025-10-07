@@ -21,7 +21,7 @@ Genrich
 
 ## Differential analysis of ChIP-seq data with standard methods
 
-DiffBind and TCseq scripts
+The script [`ChIP-seq_basic_processing/ChIPseq_DiffEnrich_Analysis_DiffBind_TCSeq.R`] was used to identify differentially enriched regions across anatomical sides (RAvsLA) and disease status (AFvsSR) of atrial samples using standard methods (DiffBind and TCSeq). It takes as input the **.narrowPeak** generated during peak calling and corresponding sample sheets containing metadata. 
 
 ## Definition of enriched H3K27ac regions across sample groups
 
