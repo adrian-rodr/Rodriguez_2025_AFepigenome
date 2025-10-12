@@ -1,0 +1,21 @@
+Species	Genome	GenomeSize	SampleID	SampleExpID	Factor	Input	InputExpID	ExperimentID
+Human	Homo_sapiens.GRCh38	3096649726	vl0029		H3K27ac	vl0037		
+Human	Homo_sapiens.GRCh38	3096649726	vl0214		H3K27ac	vl0339		
+Human	Homo_sapiens.GRCh38	3096649726	vl0258		H3K27ac	vl0264		
+Human	Homo_sapiens.GRCh38	3096649726	vl0260		H3K27ac	vl0266		
+Human	Homo_sapiens.GRCh38	3096649726	vl0326		H3K27ac	vl0333		
+Human	Homo_sapiens.GRCh38	3096649726	vl0033		H3K27ac	vl0041		
+Human	Homo_sapiens.GRCh38	3096649726	vl0028		H3K27ac	vl0036		
+Human	Homo_sapiens.GRCh38	3096649726	vl0032		H3K27ac	vl0040		
+Human	Homo_sapiens.GRCh38	3096649726	vl0212		H3K27ac	vl0228		
+Human	Homo_sapiens.GRCh38	3096649726	vl0215		H3K27ac	vl0231		
+Human	Homo_sapiens.GRCh38	3096649726	vl0256		H3K27ac	vl0262		
+Human	Homo_sapiens.GRCh38	3096649726	vl0257		H3K27ac	vl0263		
+Human	Homo_sapiens.GRCh38	3096649726	vl0027		H3K27ac	vl0035		
+Human	Homo_sapiens.GRCh38	3096649726	vl0031		H3K27ac	vl0039		
+Human	Homo_sapiens.GRCh38	3096649726	vl0218		H3K27ac	vl0234		
+Human	Homo_sapiens.GRCh38	3096649726	vl0261		H3K27ac	vl0267		
+Human	Homo_sapiens.GRCh38	3096649726	vl0026		H3K27ac	vl0034		
+Human	Homo_sapiens.GRCh38	3096649726	vl0213		H3K27ac	vl0229		
+Human	Homo_sapiens.GRCh38	3096649726	vl0217		H3K27ac	vl0340		
+Human	Homo_sapiens.GRCh38	3096649726	vl0328		H3K27ac	vl0335		

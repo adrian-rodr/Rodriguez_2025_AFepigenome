@@ -1,0 +1,42 @@
+RowNumber	LibraryID	AssayType	SubmissionID	ExperimentID	Genome	Strain	Tissue	Processing	Individual	Sex	Antibody
+29	vl0029	ChIP-seq	GC-DVL-8625	DVL1_62_4	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium_25	x-linked	25		H3K27ac
+214	vl0214	ChIP-seq	X204SC20082905-Z01-F001	D1_4	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium	x-linked	2231	male	H3K27ac
+258	vl0258	ChIP-seq	X204SC20082905-Z01-F002	s_12	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium	x-linked	9	male	H3K27ac
+260	vl0260	ChIP-seq	X204SC20082905-Z01-F002	s_14	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium	x-linked	11	male	H3K27ac
+326	vl0326	ChIP-Seq	GC-AR-9711	4_S4	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium	x-linked	18	female	H3K27ac
+33	vl0033	ChIP-seq	GC-DVL-8625	DVL1_62_8	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium_28	x-linked	28		H3K27ac
+28	vl0028	ChIP-seq	GC-DVL-8625	DVL1_62_3	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium_25	x-linked	25		H3K27ac
+32	vl0032	ChIP-seq	GC-DVL-8625	DVL1_62_7	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium_28	x-linked	28		H3K27ac
+212	vl0212	ChIP-seq	X204SC20082905-Z01-F001	D1_2	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	47	male	H3K27ac
+215	vl0215	ChIP-seq	X204SC20082905-Z01-F001	D1_5	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	31	male	H3K27ac
+256	vl0256	ChIP-seq	X204SC20082905-Z01-F002	s_10	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	6	male	H3K27ac
+257	vl0257	ChIP-seq	X204SC20082905-Z01-F002	s_11	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	8	male	H3K27ac
+27	vl0027	ChIP-seq	GC-DVL-8625	DVL1_62_2	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium_12b	x-linked	12b		H3K27ac
+31	vl0031	ChIP-seq	GC-DVL-8625	DVL1_62_6	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium_27	x-linked	27		H3K27ac
+218	vl0218	ChIP-seq	X204SC20082905-Z01-F001	D1_8	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium	x-linked	33	male	H3K27ac
+261	vl0261	ChIP-seq	X204SC20082905-Z01-F002	s_15	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium	x-linked	13	male	H3K27ac
+26	vl0026	ChIP-seq	GC-DVL-8625	DVL1_62_1	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium_12b	x-linked	12b		H3K27ac
+213	vl0213	ChIP-seq	X204SC20082905-Z01-F001	D1_3	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	45	male	H3K27ac
+217	vl0217	ChIP-seq	X204SC20082905-Z01-F001	D1_7	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	20	male	H3K27ac
+328	vl0328	ChIP-Seq	GC-AR-9711	6_S6	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	27	male	H3K27ac
+37	vl0037	ChIP-seq	GC-DVL-8625	DVL1_62_20	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium_25	x-linked	25		input
+39	vl0039	ChIP-seq	GC-DVL-8625	DVL1_62_22	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium_27	x-linked	27		input
+264	vl0264	ChIP-seq	X204SC20082905-Z01-F002	s_18	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium	x-linked	9	male	input
+266	vl0266	ChIP-seq	X204SC20082905-Z01-F002	s_20	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium	x-linked	11	male	input
+333	vl0333	ChIP-Seq	GC-AR-9711	11_S11	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium	x-linked	18	female	input
+41	vl0041	ChIP-seq	GC-DVL-8625	DVL1_62_24	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium_28	x-linked	28		input
+35	vl0035	ChIP-seq	GC-DVL-8625	DVL1_62_18	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium_12b	x-linked	12b		input
+39	vl0039	ChIP-seq	GC-DVL-8625	DVL1_62_22	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium_27	x-linked	27		input
+234	vl0234	ChIP-seq	X204SC20082905-Z01-F001	D1_24	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium	x-linked	33	male	input
+267	vl0267	ChIP-seq	X204SC20082905-Z01-F002	s_21	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium	x-linked	13	male	input
+36	vl0036	ChIP-seq	GC-DVL-8625	DVL1_62_19	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium_25	x-linked	25		input
+40	vl0040	ChIP-seq	GC-DVL-8625	DVL1_62_23	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium_28	x-linked	28		input
+228	vl0228	ChIP-seq	X204SC20082905-Z01-F001	D1_18	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	47	male	input
+231	vl0231	ChIP-seq	X204SC20082905-Z01-F001	D1_21	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	31	male	input
+262	vl0262	ChIP-seq	X204SC20082905-Z01-F002	s_16	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	6	male	input
+263	vl0263	ChIP-seq	X204SC20082905-Z01-F002	s_17	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	8	male	input
+34	vl0034	ChIP-seq	GC-DVL-8625	DVL1_62_17	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium_12b	x-linked	12b		input
+229	vl0229	ChIP-seq	X204SC20082905-Z01-F001	D1_19	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	45	male	input
+340	vl0340	ChIP-Seq	GC-AR-9711	18_S18	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	20	male	input
+335	vl0335	ChIP-Seq	GC-AR-9711	13_S13	Homo_sapiens.GRCh38	Homo_sapiens	LeftAtrium	x-linked	27	male	input
+339	vl0339	ChIP-Seq	GC-AR-9711	17_S17	Homo_sapiens.GRCh38	Homo_sapiens	RightAtrium	x-linked	2231	male	input
