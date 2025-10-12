@@ -1,0 +1,9 @@
+Group,Enriched peaks,
+AF_LA,155151,H3K27ac_AF_LA
+AF_RA,172197,H3K27ac_AF_RA
+SR_LA,168944,H3K27ac_SR_LA
+SR_RA,161046,H3K27ac_SR_RA
+AF_LA,3550,Greylisted_AF_LA
+AF_RA,3294,Greylisted_AF_RA
+SR_LA,788,Greylisted_SR_LA
+SR_RA,566,Greylisted_SR_RA
