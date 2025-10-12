@@ -52,9 +52,9 @@ The script [`QPCR_data.R`] imports processed files containing normalised data an
 
 ## DNAm EPICv2 array analysis
 
-Scripts and files can be found in `QPCR_data_analysis` directory.
+Scripts and files can be found in `DNAm_data_analysis` directory.
 
-The script [`DNAm_data_analysis.R`] imports raw **.idat** files from EPICv2 array data and performs EWAS and DMR analysis with ***dmrff***. 
+The script [`DNAm_data_analysis.R`] performs DMR analysis with ***dmrff*** and explores methylation levels in regions of interest. 
 
 
 ## Transcription Factor Enrichment analysis
