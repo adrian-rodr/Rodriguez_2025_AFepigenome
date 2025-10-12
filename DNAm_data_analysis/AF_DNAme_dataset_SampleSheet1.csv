@@ -1,0 +1,17 @@
+Sample_Name,Sample_Well,Sample_Source,Sample_Group,Sample_Label,Pool_ID,Sex,Array,Slide,Basename
+47-AF-RA,A01,<NA>,AF,RA,<NA>,M,R01C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/47-AF-RA/207030420039_R01C01
+25-AF-RA,B01,<NA>,AF,RA,<NA>,M,R02C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/25-AF-RA/207030420039_R02C01
+25-AF-LA,C01,<NA>,AF,LA,<NA>,M,R03C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/25-AF-LA/207030420039_R03C01
+31-AF-RA,D01,<NA>,AF,RA,<NA>,M,R04C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/31-AF-RA/207030420039_R04C01
+18-AF-LA,E01,<NA>,AF,LA,<NA>,F,R05C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/18-AF-LA/207030420039_R05C01
+313-AF-LA,F01,<NA>,AF,LA,<NA>,M,R06C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/313-AF-LA/207030420039_R06C01
+45-SR-RA,G01,<NA>,SR,RA,<NA>,M,R07C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/45-SR-RA/207030420039_R07C01
+12b-SR-LA,H01,<NA>,SR,LA,<NA>,M,R08C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/12b-SR-LA/207030420039_R08C01
+47-AF-LA,A02,<NA>,AF,LA,<NA>,M,R01C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/47-AF-LA/207030420045_R01C01
+2231-AF-RA,B02,<NA>,AF,RA,<NA>,M,R02C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/2231-AF-RA/207030420045_R02C01
+20-SR-LA,C02,<NA>,SR,LA,<NA>,M,R03C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/20-SR-LA/207030420045_R03C01
+2231-AF-LA,D02,<NA>,AF,LA,<NA>,M,R04C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/2231-AF-LA/207030420045_R04C01
+45-SR-LA,E02,<NA>,SR,LA,<NA>,M,R05C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/45-SR-LA/207030420045_R05C01
+12b-SR-RA,F02,<NA>,SR,RA,<NA>,M,R06C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/12b-SR-RA/207030420045_R06C01
+28-AF-RA,G02,<NA>,AF,RA,<NA>,M,R07C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/28-AF-RA/207030420045_R07C01
+28-AF-LA,H02,<NA>,AF,LA,<NA>,M,R08C01,2.07E+11,/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/28-AF-LA/207030420045_R08C01
