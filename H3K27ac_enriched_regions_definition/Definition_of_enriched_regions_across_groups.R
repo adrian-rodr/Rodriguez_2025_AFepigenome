@@ -2626,6 +2626,8 @@ colorder4 <- c(AF, SR)
 
 
 data <- read.delim("genrich_c2_merged_fpkm_normalized.csv", header=T, sep="\t")
+# "genrich_c2_merged_fpkm_normalized.csv" is not stored on GitHub in its uncompressed form.
+# Please make sure to unzip this file locally before running the script. 
 
 
 # Reorder by AFLA, AFRA, SRLA, SRRA
