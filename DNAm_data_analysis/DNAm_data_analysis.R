@@ -421,7 +421,10 @@ ggplot(result_df, aes(x = "", y = DMRs, fill = Type_of_Region)) +
 
 
 ####################### ####################### ####################### ####################### ####################### #######################
+
+
 ## Plot methylation levels in candidate loci of interest
+# As shown in 📊 Figures 6b, 6c, 6d, 7b, 7d and S7a
 
 beta_matrix2 <- norm_noXY.beta
 dim(beta_matrix2)
