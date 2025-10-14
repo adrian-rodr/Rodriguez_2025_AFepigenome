@@ -520,5 +520,22 @@ ggplot(beta_matrix2_data_subset_df_melted_edited2, aes(x = start, y = value, col
 
 
 
+####################### ####################### ####################### ####################### ####################### #######################
+
+
+## Integration of DNAm data with H3K27ac ChIP-seq and RNA-seq DEGs
+## Related to Figure S6b
+
+
+# Genes associated to DMRs assigned based on genomic proximity (GREAT tool; https://great.stanford.edu/great/public/html/)
+
+DMR_Genes <- read.delim("dmrs_dmrff_Chris_associated_Genes.txt", header = TRUE, sep = "")
+
+DMR_Genes_AFhypermeth <- read.delim("dmrs_dmrff_Chris_AFhypermeth_associated_genes.txt", header = TRUE, sep = "")
+
+DMR_Genes_AFhypometh <- read.delim("dmrs_dmrff_Chris_AFhypometh_associated_genes.txt", header = TRUE, sep = "")
+
+
+
 
 
