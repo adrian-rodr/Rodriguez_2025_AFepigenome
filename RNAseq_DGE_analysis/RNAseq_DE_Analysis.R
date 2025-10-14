@@ -617,7 +617,7 @@ LRRC4B_expr_boxplot_doxplot +
 
 ### ZNF727
 # 📊 Figure 7d
-counts_df_ZNF727 <- counts['ENSG00000164107',]
+counts_df_ZNF727 <- counts['ENSG00000214652',]
 names(counts_df_ZNF727)
 sample_type <- SLC43A3_expr$Sample_type
 disease_status <- c("SR","SR","SR","SR","SR","SR","SR","SR","SR","SR","AF","AF","AF","AF","AF","AF","AF","AF","AF","AF")
@@ -715,7 +715,7 @@ MNT_expr_expr_boxplot_doxplot+
 
 ### SYT3
 # 📊 Figure S7b
-counts_df_SYT3 <- counts['ENSG00000070444',]
+counts_df_SYT3 <- counts['ENSG00000213023',]
 names(counts_df_SYT3)
 sample_type <- SLC43A3_expr$Sample_type
 disease_status <- c("SR","SR","SR","SR","SR","SR","SR","SR","SR","SR","AF","AF","AF","AF","AF","AF","AF","AF","AF","AF")
@@ -739,7 +739,7 @@ SYT3_expr_expr_boxplot_doxplot+
 
 ### SHANK1
 # 📊 Figure S7b
-counts_df_SHANK1 <- counts['ENSG00000006468',]
+counts_df_SHANK1 <- counts['ENSG00000161681',]
 names(counts_df_SHANK1)
 sample_type <- SLC43A3_expr$Sample_type
 disease_status <- c("SR","SR","SR","SR","SR","SR","SR","SR","SR","SR","AF","AF","AF","AF","AF","AF","AF","AF","AF","AF")
