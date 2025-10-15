@@ -22,6 +22,8 @@ install("yousefi138/geograbi")
 library(dmrff)
 library(geograbi)
 library(dplyr)
+library(reshape2)
+library(RColorBrewer)
 
 
 setwd("Rodriguez_2025_AFepigenome/DNAm_data_analysis")
@@ -548,95 +550,174 @@ intersectt <- function (x, y)
 }
 
 
+
+
+############## H3K27ac data
+##############
+
 setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/geneToPeaks")
 
 AF_enriched_peaks_genes <- read.delim(file="./geneToPeaks/AF_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered.txt", header = TRUE, sep = "")
 SR_enriched_peaks_genes <- read.delim(file="./geneToPeaks/SR_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered.txt", header = TRUE, sep = "")
 
 
-############## H3K27ac data
-##############
+## AF-enriched / AFhypo
+DMR_AFhypo_genes_AF_enriched_peaks_genes <- intersectt(DMR_Genes_AFhypometh[,1],AF_enriched_peaks_genes[,1])  
+DMR_AFhypo_genes_AF_enriched_peaks_genes
+DMR_AFhypo_genes_AF_enriched_peaks_genes_x <- list(
+  A = DMR_Genes_AFhypometh[,1], 
+  B = AF_enriched_peaks_genes[,1])
+DMR_AFhypo_genes_AF_enriched_peaks_genes_VennDiagram <- ggvenn(
+  DMR_AFhypo_genes_AF_enriched_peaks_genes_x, 
+  fill_color = c("#78285f", "#9b7ede" ),
+  stroke_size = 0.5, set_name_size = 4
+)
 
 
+## AF-enriched / AFhyper
+DMR_AFhyper_genes_AF_enriched_peaks_genes <- intersectt(DMR_Genes_AFhypermeth[,1],AF_enriched_peaks_genes[,1])  
+DMR_AFhyper_genes_AF_enriched_peaks_genes
+DMR_AFhyper_genes_AF_enriched_peaks_genes_x <- list(
+  A = DMR_Genes_AFhypermeth[,1], 
+  B = AF_enriched_peaks_genes[,1])
+DMR_AFhyper_genes_AF_enriched_peaks_genes_VennDiagram <- ggvenn(
+  DMR_AFhyper_genes_AF_enriched_peaks_genes_x, 
+  fill_color = c("#78285f", "#9b7ede" ),
+  stroke_size = 0.5, set_name_size = 4
+)
 
 
+## SR-enriched / AFhypo
+DMR_AFhypo_genes_SR_enriched_peaks_genes <- intersectt(DMR_Genes_AFhypometh[,1],SR_enriched_peaks_genes[,1])  
+DMR_AFhypo_genes_SR_enriched_peaks_genes
+DMR_AFhypo_genes_SR_enriched_peaks_genes_x <- list(
+  A = DMR_Genes_AFhypometh[,1], 
+  B = SR_enriched_peaks_genes[,1])
+DMR_AFhypo_genes_SR_enriched_peaks_genes_VennDiagram <- ggvenn(
+  DMR_AFhypo_genes_SR_enriched_peaks_genes_x, 
+  fill_color = c("#78285f", "#9b7ede" ),
+  stroke_size = 0.5, set_name_size = 4
+)
 
 
+## SR-enriched / AFhyper
+
+DMR_AFhyper_genes_SR_enriched_peaks_genes <- intersectt(DMR_Genes_AFhypermeth[,1],SR_enriched_peaks_genes[,1])  
+DMR_AFhyper_genes_SR_enriched_peaks_genes
+DMR_AFhyper_genes_SR_enriched_peaks_genes_x <- list(
+  A = DMR_Genes_AFhypermeth[,1], 
+  B = SR_enriched_peaks_genes[,1])
+DMR_AFhyper_genes_SR_enriched_peaks_genes_VennDiagram <- ggvenn(
+  DMR_AFhyper_genes_SR_enriched_peaks_genes_x, 
+  fill_color = c("#78285f", "#9b7ede" ),
+  stroke_size = 0.5, set_name_size = 4
+)
+
+
+DMRs_ChIPseq_forcorrplot <- data.frame(matrix(ncol = 2, nrow = 2))
+rownames(DMRs_ChIPseq_forcorrplot) <- c("AFhypo", "AFhyper")
+colnames(DMRs_ChIPseq_forcorrplot) <- c("AFenriched", "SRenriched")
+
+
+#DMRs_AFhypo_genes_AFpeaks_genes
+a <- 12
+b <- 1052-a
+c <- 92-a
+d <- 15538-a-b-c
+DMRs_AFhypo_genes_AFpeaks_genes_df <- data.frame(
+  "Group1" = c(a,b),
+  "Group2" = c(c,d),
+  row.names = c("Cat1", "Cat2"),
+  stringsAsFactors = FALSE
+)
+DMRs_AFhypo_genes_AFpeaks_genes_df <- fisher.test(DMRs_AFhypo_genes_AFpeaks_genes_df)
+DMRs_AFhypo_genes_AFpeaks_genes_df
+DMRs_AFhypo_genes_AFpeaks_genes_df$p.value
+
+DMRs_ChIPseq_forcorrplot["AFhypo", "AFenriched"] <- -log10(DMRs_AFhypo_genes_AFpeaks_genes_df$p.value)
+
+
+#DMRs_AFhyper_genes_AFpeaks_genes
+a <- 15
+b <- 1052-a
+c <- 139-a
+d <- 15538-a-b-c
+DMRs_AFhyper_genes_AFpeaks_genes_df <- data.frame(
+  "Group1" = c(a,b),
+  "Group2" = c(c,d),
+  row.names = c("Cat1", "Cat2"),
+  stringsAsFactors = FALSE
+)
+DMRs_AFhyper_genes_AFpeaks_genes_df <- fisher.test(DMRs_AFhyper_genes_AFpeaks_genes_df)
+DMRs_AFhyper_genes_AFpeaks_genes_df
+DMRs_AFhyper_genes_AFpeaks_genes_df$p.value
+
+DMRs_ChIPseq_forcorrplot["AFhyper", "AFenriched"] <- -log10(DMRs_AFhyper_genes_AFpeaks_genes_df$p.value)
+
+
+#DMRs_AFhypo_genes_SRpeaks_genes
+a <- 17
+b <- 1148-a
+c <- 92-a
+d <- 15538-a-b-c
+DMRs_AFhypo_genes_SRpeaks_genes_df <- data.frame(
+  "Group1" = c(a,b),
+  "Group2" = c(c,d),
+  row.names = c("Cat1", "Cat2"),
+  stringsAsFactors = FALSE
+)
+DMRs_AFhypo_genes_SRpeaks_genes_df <- fisher.test(DMRs_AFhypo_genes_SRpeaks_genes_df)
+DMRs_AFhypo_genes_SRpeaks_genes_df
+DMRs_AFhypo_genes_SRpeaks_genes_df$p.value
+
+DMRs_ChIPseq_forcorrplot["AFhypo", "SRenriched"] <- -log10(DMRs_AFhypo_genes_SRpeaks_genes_df$p.value)
+
+
+#DMRs_AFhyper_genes_SRpeaks_genes
+a <- 12
+b <- 1148-a
+c <- 139-a
+d <- 15538-a-b-c
+DMRs_AFhyper_genes_SRpeaks_genes_df <- data.frame(
+  "Group1" = c(a,b),
+  "Group2" = c(c,d),
+  row.names = c("Cat1", "Cat2"),
+  stringsAsFactors = FALSE
+)
+DMRs_AFhyper_genes_SRpeaks_genes_df <- fisher.test(DMRs_AFhyper_genes_SRpeaks_genes_df)
+DMRs_AFhyper_genes_SRpeaks_genes_df
+DMRs_AFhyper_genes_SRpeaks_genes_df$p.value
+
+
+DMRs_ChIPseq_forcorrplot["AFhyper", "SRenriched"] <- -log10(DMRs_AFhyper_genes_SRpeaks_genes_df$p.value)
+DMRs_ChIPseq_forcorrplot$meth_status <- rownames(DMRs_ChIPseq_forcorrplot)
+DMRs_ChIPseq_forcorrplot <- melt(DMRs_ChIPseq_forcorrplot)
+as.numeric(DMRs_ChIPseq_forcorrplot$value)
+purple_palette <- brewer.pal(3, "BuPu") # 9 is the number of colors
+
+overlap_heatmap <- ggplot(data = DMRs_ChIPseq_forcorrplot, aes(x=meth_status, y=variable, fill=value)) + # 📊 Figures S6b (upper plot)
+  geom_tile(colour = "black", linewidth = 1) + scale_fill_gradientn(colours=purple_palette) + theme(axis.text=element_text(size=10),axis.text.x=element_text(angle = -90, hjust = 0)) 
+overlap_heatmap + scale_x_discrete(expand = c(0, 0)) + scale_y_discrete(expand = c(0, 0)) 
 
 
 
 ############## Gene expression
 ##############
 
+setwd("/Rodriguez_2025_AFepigenome/RNAseq_DGE_analysis/")
 
-#Subsetting by direction
-setwd("/Users/adrianrodriguez/Desktop/PhD/ChIP-Seq_data_analysis/MACS2_bdgdiff/bdgdiff_pairwise_analysis_output/Results_250523_c2threshold/composite_comparisons_analyses/Integration_with_RNA-seq_data/genesets/STAR_featureCounts_DEG_results/subsetting_up_and_down/")
+## NOTE: The input DEG files used below (e.g., files ending in "SRup", "AFup", "AFRAup", "SRRAup", etc.) were generated by subsetting the full DESeq2 output files according to the direction of differential expression.
+## These filtered text files were obtained during the analysis performed in RNAseq_DGE_analysis/RNAseq_DE_Analysis.R
+
+
 AFvsSR_SRup <- read.delim("DEseq2_results_SRup.txt", header = FALSE, sep = "")
 AFvsSR_SRup <- AFvsSR_SRup[-1,]
 AFvsSR_SRup_genes <- AFvsSR_SRup[,1]
 AFvsSR_AFup <- read.delim("DEseq2_results_AFup.txt", header = FALSE, sep = "")
 AFvsSR_AFup <- AFvsSR_AFup[-1,]
+AFvsSR_AFup_genes <- AFvsSR_AFup[,1]
 
-
-# AFup
-
-#Look at intersect of AF-enriched peaks associated genes and AFvsSR genes
-setwd("/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/DMRs_integration_GE/Chris_DMRs/") 
-DMR_genes_AFup_genes <- intersectt(DMR_Genes[,1],AFvsSR_AFup[,1])  
-DMR_genes_AFup_genes
-DMR_genes_AFup_genes_x <- list(
-  A = DMR_Genes[,1], 
-  B = AFvsSR_AFup[,1])
-DMR_genes_AFup_genes_VennDiagram <- ggvenn(
-  DMR_genes_AFup_genes_x, 
-  fill_color = c("#78285f", "#92e4cd" ),
-  stroke_size = 0.5, set_name_size = 4
-)
-
-pdf("DMR_genes_AFup_genes_VennDiagram.pdf")
-DMR_genes_AFup_genes_VennDiagram
-dev.off()
-
-
-AFup_methylation_integration_DMRs_GREAT_details <- DMR_Genes[DMR_Genes$X. %in% DMR_genes_AFup_genes, ]
-write.csv(AFup_methylation_integration_DMRs_GREAT_details,file="AFup_methylation_integration_DMRs_GREAT_details.csv")
-
-
-
-# SRup
-
-#Look at intersect of AF-enriched peaks associated genes and AFvsSR genes
-setwd("/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/DMRs_integration_GE/Chris_DMRs/") 
-DMR_genes_SRup_genes <- intersectt(DMR_Genes[,1],AFvsSR_SRup[,1])  
-DMR_genes_SRup_genes
-DMR_genes_SRup_genes_x <- list(
-  A = DMR_Genes[,1], 
-  B = AFvsSR_SRup[,1])
-DMR_genes_SRup_genes_VennDiagram <- ggvenn(
-  DMR_genes_SRup_genes_x, 
-  fill_color = c("#78285f", "#92e4cd" ),
-  stroke_size = 0.5, set_name_size = 4
-)
-
-pdf("DMR_genes_SRup_genes_VennDiagram.pdf")
-DMR_genes_SRup_genes_VennDiagram
-dev.off()
-
-
-SRup_methylation_integration_DMRs_GREAT_details <- DMR_Genes[DMR_Genes$X. %in% DMR_genes_SRup_genes, ]
-write.csv(SRup_methylation_integration_DMRs_GREAT_details,file="SRup_methylation_integration_DMRs_GREAT_details.csv")
-
-
-
-### subsetting DMRs by direction
-
-
-
-
-# AFup - AFhypo
-
-#Look at intersect of AF-enriched peaks associated genes and AFvsSR genes
-setwd("/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/DMRs_integration_GE/Chris_DMRs/") 
+## AF-up / AFhypo
 DMR_AFhypo_genes_AFup_genes <- intersectt(DMR_Genes_AFhypometh[,1],AFvsSR_AFup[,1])  
 DMR_AFhypo_genes_AFup_genes
 DMR_AFhypo_genes_AFup_genes_x <- list(
@@ -648,20 +729,11 @@ DMR_AFhypo_genes_AFup_genes_VennDiagram <- ggvenn(
   stroke_size = 0.5, set_name_size = 4
 )
 
-pdf("DMR_AFhypo_genes_AFup_genes_VennDiagram.pdf")
-DMR_AFhypo_genes_AFup_genes_VennDiagram
-dev.off()
-
-
 AFup_AFhypomethylation_integration_DMRs_GREAT_details <- DMR_Genes_AFhypometh[DMR_Genes_AFhypometh$X. %in% DMR_AFhypo_genes_AFup_genes, ]
 write.csv(AFup_AFhypomethylation_integration_DMRs_GREAT_details,file="AFup_AFhypomethylation_integration_DMRs_GREAT_details.csv")
 
 
-# AFup - AFhyper
-
-#Look at intersect of AF-enriched peaks associated genes and AFvsSR genes
-setwd("/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/DMRs_integration_GE/Chris_DMRs/") 
-
+## AF-up / AFhyper
 DMR_AFhyper_genes_AFup_genes <- intersectt(DMR_Genes_AFhypermeth[,1],AFvsSR_AFup[,1])  
 DMR_AFhyper_genes_AFup_genes
 DMR_AFhyper_genes_AFup_genes_x <- list(
@@ -673,19 +745,11 @@ DMR_AFhyper_genes_AFup_genes_VennDiagram <- ggvenn(
   stroke_size = 0.5, set_name_size = 4
 )
 
-pdf("DMR_AFhyper_genes_AFup_genes_VennDiagram.pdf")
-DMR_AFhyper_genes_AFup_genes_VennDiagram
-dev.off()
-
-
 AFup_AFhypermethylation_integration_DMRs_GREAT_details <- DMR_Genes_AFhypometh[DMR_Genes_AFhypermeth$X. %in% DMR_AFhyper_genes_AFup_genes, ]
 write.csv(AFup_AFhypermethylation_integration_DMRs_GREAT_details,file="AFup_AFhypermethylation_integration_DMRs_GREAT_details.csv")
 
 
-# SRup - AFhypo
-
-#Look at intersect of AF-enriched peaks associated genes and AFvsSR genes
-setwd("/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/DMRs_integration_GE/Chris_DMRs/") 
+## SR-up / AFhypo
 DMR_AFhypo_genes_SRup_genes <- intersectt(DMR_Genes_AFhypometh[,1],AFvsSR_SRup[,1])  
 DMR_AFhypo_genes_SRup_genes
 DMR_AFhypo_genes_SRup_genes_x <- list(
@@ -697,19 +761,11 @@ DMR_AFhypo_genes_SRup_genes_VennDiagram <- ggvenn(
   stroke_size = 0.5, set_name_size = 4
 )
 
-pdf("DMR_AFhypo_genes_SRup_genes_VennDiagram.pdf")
-DMR_AFhypo_genes_SRup_genes_VennDiagram
-dev.off()
-
-
 SRup_AFhypomethylation_integration_DMRs_GREAT_details <- DMR_Genes_AFhypometh[DMR_Genes_AFhypometh$X. %in% DMR_AFhypo_genes_SRup_genes, ]
 write.csv(SRup_AFhypomethylation_integration_DMRs_GREAT_details,file="SRup_AFhypomethylation_integration_DMRs_GREAT_details.csv")
 
 
-# SRup - AFhyper
-
-#Look at intersect of AF-enriched peaks associated genes and AFvsSR genes
-setwd("/Users/adrianrodriguez/Desktop/PhD/AF_DNAme_dataset/DMRs_integration_GE/Chris_DMRs/") 
+## SR-up / AFhyper
 DMR_AFhyper_genes_SRup_genes <- intersectt(DMR_Genes_AFhypermeth[,1],AFvsSR_SRup[,1])  
 DMR_AFhyper_genes_SRup_genes
 DMR_AFhyper_genes_SRup_genes_x <- list(
@@ -721,15 +777,109 @@ DMR_AFhyper_genes_SRup_genes_VennDiagram <- ggvenn(
   stroke_size = 0.5, set_name_size = 4
 )
 
-pdf("DMR_AFhyper_genes_SRup_genes_VennDiagram.pdf")
-DMR_AFhyper_genes_SRup_genes_VennDiagram
-dev.off()
-
-
 SRup_AFhypermethylation_integration_DMRs_GREAT_details <- DMR_Genes_AFhypermeth[DMR_Genes_AFhypermeth$X. %in% DMR_AFhyper_genes_SRup_genes, ]
 write.csv(SRup_AFhypermethylation_integration_DMRs_GREAT_details,file="SRup_AFhypermethylation_integration_DMRs_GREAT_details.csv")
 
 
+
+
+DMRs_DEGs_forcorrplot <- data.frame(matrix(ncol = 2, nrow = 2))
+rownames(DMRs_DEGs_forcorrplot) <- c("AFhypo", "AFhyper")
+colnames(DMRs_DEGs_forcorrplot) <- c("AFup", "SRup")
+
+# AFhypo DMRs associated genes: 92
+# AFhyper DMRs associated genes: 139
+
+#DMRs_AFhypo_genes_AFup_genes
+a <- 4
+b <- 502-a
+c <- 92-a
+d <- 15538-a-b-c
+DMRs_AFhypo_genes_AFup_genes_df <- data.frame(
+  "Group1" = c(a,b),
+  "Group2" = c(c,d),
+  row.names = c("Cat1", "Cat2"),
+  stringsAsFactors = FALSE
+)
+DMRs_AFhypo_genes_AFup_genes_df <- fisher.test(DMRs_AFhypo_genes_AFup_genes_df)
+DMRs_AFhypo_genes_AFup_genes_df
+DMRs_AFhypo_genes_AFup_genes_df$p.value
+DMRs_DEGs_forcorrplot["AFhypo", "AFup"] <- -log10(DMRs_AFhypo_genes_AFup_genes_df$p.value)
+
+#DMRs_AFhyper_genes_AFup_genes
+a <- 3
+b <- 502-a
+c <- 139-a
+d <- 15538-a-b-c
+DMRs_AFhyper_genes_AFup_genes_df <- data.frame(
+  "Group1" = c(a,b),
+  "Group2" = c(c,d),
+  row.names = c("Cat1", "Cat2"),
+  stringsAsFactors = FALSE
+)
+DMRs_AFhyper_genes_AFup_genes_df <- fisher.test(DMRs_AFhyper_genes_AFup_genes_df)
+DMRs_AFhyper_genes_AFup_genes_df
+DMRs_AFhyper_genes_AFup_genes_df$p.value
+DMRs_DEGs_forcorrplot["AFhyper", "AFup"] <- -log10(DMRs_AFhyper_genes_AFup_genes_df$p.value)
+
+#DMRs_AFhypo_genes_SRup_genes
+a <- 4
+b <- 744-a
+c <- 92-a
+d <- 15538-a-b-c
+DMRs_AFhypo_genes_SRup_genes_df <- data.frame(
+  "Group1" = c(a,b),
+  "Group2" = c(c,d),
+  row.names = c("Cat1", "Cat2"),
+  stringsAsFactors = FALSE
+)
+DMRs_AFhypo_genes_SRup_genes_df <- fisher.test(DMRs_AFhypo_genes_SRup_genes_df)
+DMRs_AFhypo_genes_SRup_genes_df
+DMRs_AFhypo_genes_SRup_genes_df$p.value
+DMRs_DEGs_forcorrplot["AFhypo", "SRup"] <- -log10(DMRs_AFhypo_genes_SRup_genes_df$p.value)
+
+#DMRs_AFhyper_genes_SRup_genes
+a <- 5
+b <- 744-a
+c <- 139-a
+d <- 15538-a-b-c
+DMRs_AFhyper_genes_SRup_genes_df <- data.frame(
+  "Group1" = c(a,b),
+  "Group2" = c(c,d),
+  row.names = c("Cat1", "Cat2"),
+  stringsAsFactors = FALSE
+)
+DMRs_AFhyper_genes_SRup_genes_df <- fisher.test(DMRs_AFhyper_genes_SRup_genes_df)
+DMRs_AFhyper_genes_SRup_genes_df
+DMRs_AFhyper_genes_SRup_genes_df$p.value
+DMRs_DEGs_forcorrplot["AFhyper", "SRup"] <- -log10(DMRs_AFhyper_genes_SRup_genes_df$p.value)
+DMRs_DEGs_forcorrplot$meth_status <- rownames(DMRs_DEGs_forcorrplot)
+DMRs_DEGs_forcorrplot <- melt(DMRs_DEGs_forcorrplot)
+as.numeric(DMRs_DEGs_forcorrplot$value)
+purple_palette <- brewer.pal(3, "GnBu") # 9 is the number of colors
+overlap_heatmap <- ggplot(data = DMRs_DEGs_forcorrplot, aes(x=meth_status, y=variable, fill=value)) +  # 📊 Figures S6b (bottom plot)
+  geom_tile(colour = "black", linewidth = 1) + scale_fill_gradientn(colours=purple_palette) + theme(axis.text=element_text(size=10),axis.text.x=element_text(angle = -90, hjust = 0)) 
+overlap_heatmap +scale_x_discrete(expand = c(0, 0)) + scale_y_discrete(expand = c(0, 0))
+
+
+############## Integration across three datasets (ChIP-seq, RNA-seq and DNAm)
+##############
+
+All_DMRs <- unique(c(DMR_Genes_AFhypermeth[,1], DMR_Genes_AFhypometh[,1]))
+All_peaks <- unique(c(AF_enriched_peaks_genes[,1],SR_enriched_peaks_genes[,1]))
+All_DEGs <- unique(c(AFvsSR_AFup[,1], AFvsSR_SRup[,1]))
+
+common_elements <- Reduce(intersect, list(All_DMRs,All_peaks,All_DEGs))
+
+common_elements_x <- list(
+  A = All_peaks, 
+  B = All_DEGs,
+  C = All_DMRs)
+common_elements_VennDiagram <- ggvenn(   # 📊 Figures S6b (3-way Venn Diagram)
+  common_elements_x, 
+  fill_color = c("#9780D7", "#92e4cd" ,"#78285f"),
+  stroke_size = 0.5, set_name_size = 4
+)
 
 
 
