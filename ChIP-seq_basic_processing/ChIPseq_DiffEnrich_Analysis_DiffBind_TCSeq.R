@@ -69,7 +69,7 @@ narrowPeak_df_Oct24 <- bind_rows(s12b_SR_LA_peaks.narrowPeak,
                                  s47_AF_LA_peaks.narrowPeak, 
 )
 
-
+# Generate reference peakset
 gf_Oct24 <- peakreference (data = narrowPeak_df_Oct24)
 
 save(gf_Oct24 ,file="gf_Oct24.RData")
@@ -78,7 +78,6 @@ load("gf_Oct24.RData")
 
 
 experiment_BAMfiles_H3K27ac_AFvsSR <- read.csv(file='FINAL_DATASET_TCSeq_H3K27ac_OCT24.txt', sep='\t', header = TRUE)
-library("TCseq")
 tca_AFvsSR_H3K27ac_Oct24 <- TCA(design = experiment_BAMfiles_H3K27ac_AFvsSR, genomicFeature = gf_Oct24)
 tca_AFvsSR_H3K27ac_Oct24
 tca_AFvsSR_H3K27ac_Oct24 <- countReads(tca_AFvsSR_H3K27ac_Oct24)
