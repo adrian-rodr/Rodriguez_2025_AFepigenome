@@ -15,6 +15,8 @@ library(TCseq)
 library(DiffBind)
 library(dplyr)
 library(ggplot2)
+library(Repitools)
+
 
 
 ##########
@@ -77,25 +79,23 @@ save(gf_Oct24 ,file="gf_Oct24.RData")
 load("gf_Oct24.RData")
 
 
+library("TCseq")
 experiment_BAMfiles_H3K27ac_AFvsSR <- read.csv(file='FINAL_DATASET_TCSeq_H3K27ac_OCT24.txt', sep='\t', header = TRUE)
 tca_AFvsSR_H3K27ac_Oct24 <- TCA(design = experiment_BAMfiles_H3K27ac_AFvsSR, genomicFeature = gf_Oct24)
 tca_AFvsSR_H3K27ac_Oct24
 tca_AFvsSR_H3K27ac_Oct24 <- countReads(tca_AFvsSR_H3K27ac_Oct24)
 tca_AFvsSR_H3K27ac_Oct24
-save(tca_AFvsSR_H3K27ac_Oct24, file = "tca_AFvsSR_H3K27ac_Oct24.RData")
+#save(tca_AFvsSR_H3K27ac_Oct24, file = "tca_AFvsSR_H3K27ac_Oct24.RData")
 
 
 # Explore AF vs SR regions (differential analysis)
-library("TCseq")
 load("tca_AFvsSR_H3K27ac_Oct24.RData")
 tca_AFvsSR_H3K27ac_Oct24
 tca_AFvsSR_H3K27ac_Oct24
-tca_AFvsSR_H3K27ac_Oct24.DB <- DBresult(tca_AFvsSR_H3K27ac_Oct24, group1 = "AF", group2 = "SR") ## Outputs the AFvsSR differentially bound regions (as shown in Supplementary Table 2).
+tca_AFvsSR_H3K27ac_Oct24.DB <- DBresult(tca_AFvsSR_H3K27ac_Oct24, group1 = "AF", group2 = "SR") ## Outputs the TCSeq-detected AFvsSR differentially bound regions (as shown in Supplementary Table 2).
 #Volcano plot of AF vs SR regions
-library(Repitools)
 tca_AFvsSR_H3K27ac_Oct24.DB_GRanges <- unlist(tca_AFvsSR_H3K27ac_Oct24.DB)
 tca_AFvsSR_H3K27ac_Oct24.DB_GRanges_df <- annoGR2DF(tca_AFvsSR_H3K27ac_Oct24.DB_GRanges)
-library(dplyr)
 tca_AFvsSR_H3K27ac_Oct24.DB_GRanges_df = mutate(tca_AFvsSR_H3K27ac_Oct24.DB_GRanges_df, UPORDOWN = ifelse(tca_AFvsSR_H3K27ac_Oct24.DB_GRanges_df$paj>0.05,"non", ifelse(tca_AFvsSR_H3K27ac_Oct24.DB_GRanges_df$logFC < 0,"AF","SR")))
 AFvsSR_volcanoplot_tcseq <- ggplot(tca_AFvsSR_H3K27ac_Oct24.DB_GRanges_df, aes(logFC, -log(paj,10)))  +
   geom_point(aes(col = UPORDOWN), size = 1) +
@@ -132,16 +132,18 @@ AF_final_dataset_H3K27ac_Dec23_dba <- dba.analyze(AF_final_dataset_H3K27ac_Dec23
 AF_final_dataset_H3K27ac_Dec23_dba.DB <- dba.report(AF_final_dataset_H3K27ac_Dec23_dba)
 sum(AF_final_dataset_H3K27ac_Dec23_dba.DB$Fold>0) #638
 sum(AF_final_dataset_H3K27ac_Dec23_dba.DB$Fold<0) #246
-save(AF_final_dataset_H3K27ac_Dec23_dba.DB, file="AF_final_dataset_H3K27ac_Dec23_dba.DB") ## Outputs the AFvsSR differentially bound regions (as shown in 📎 Supplementary Table 2).
-write.csv(AF_final_dataset_H3K27ac_Dec23_dba.DB, file="DiffLA")
+save(AF_final_dataset_H3K27ac_Dec23_dba.DB, file="AF_final_dataset_H3K27ac_Dec23_dba.DB") ## Outputs the DiffBind-detected RAvsLA differentially bound regions (as shown in 📎 Supplementary Table 2).
+write.csv(AF_final_dataset_H3K27ac_Dec23_dba.DB, file="RAvsLA_AF_final_dataset_H3K27ac_Dec23_dba.DB.csv")
 
 #CONDITION
+AF_final_dataset_H3K27ac_Dec23_dba_condition <- AF_final_dataset_H3K27ac_Dec23_dba
+AF_final_dataset_H3K27ac_Dec23_dba_condition$class[DBA_CONDITION, ] <- c("AF","AF","AF","AF","AF","AF","SR","SR","SR","SR","AF","AF","AF","AF","AF","AF","SR","SR","SR","SR")
 AF_final_dataset_H3K27ac_Dec23_dba_condition <- dba.contrast(AF_final_dataset_H3K27ac_Dec23_dba_condition, categories=DBA_CONDITION, minMembers=2 )
 AF_final_dataset_H3K27ac_Dec23_dba_condition <- dba.analyze(AF_final_dataset_H3K27ac_Dec23_dba_condition,bBlacklist=FALSE,bGreylist=FALSE)
 AF_final_dataset_H3K27ac_Dec23_dba_condition.DB <- dba.report(AF_final_dataset_H3K27ac_Dec23_dba_condition)
 sum(AF_final_dataset_H3K27ac_Dec23_dba_condition.DB$Fold>0) #0
 sum(AF_final_dataset_H3K27ac_Dec23_dba_condition.DB$Fold<0) #3
-save(AF_final_dataset_H3K27ac_Dec23_dba_condition.DB, file="AF_final_dataset_H3K27ac_Dec23_dba_condition.DB") ## Outputs the AFvsSR differentially bound regions (as shown in 📎 Supplementary Table 2).
+save(AF_final_dataset_H3K27ac_Dec23_dba_condition.DB, file="AF_final_dataset_H3K27ac_Dec23_dba_condition.DB") ## Outputs the DiffBind-detected AFvsSR differentially bound regions (as shown in 📎 Supplementary Table 2).
 write.csv(AF_final_dataset_H3K27ac_Dec23_dba_condition.DB, file="AFvsSR_final_dataset_H3K27ac_Dec23_dba_condition.DB.csv")
 
 
