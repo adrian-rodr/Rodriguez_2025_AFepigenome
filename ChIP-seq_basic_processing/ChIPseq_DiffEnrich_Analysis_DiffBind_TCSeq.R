@@ -70,7 +70,6 @@ narrowPeak_df_Oct24 <- bind_rows(s12b_SR_LA_peaks.narrowPeak,
 )
 
 
-library("TCseq")
 gf_Oct24 <- peakreference (data = narrowPeak_df_Oct24)
 
 save(gf_Oct24 ,file="gf_Oct24.RData")
