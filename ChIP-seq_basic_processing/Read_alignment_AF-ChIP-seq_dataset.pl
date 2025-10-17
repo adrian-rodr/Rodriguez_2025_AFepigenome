@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# Program to generate a jobfiles for read alignment of a batch of fastqfiles
+# Program to generate jobfiles for read alignment of a batch of fastqfiles
 # and send the jobfiles to the QMUL apocrita cluster
 
 

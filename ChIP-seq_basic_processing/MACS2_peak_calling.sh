@@ -19,6 +19,7 @@ pip install macs2
 
 
 # Remove duplicates with Picard in BAM files from libraries displaying high levels of duplication
+# High levels of duplication were evaluated after peak calling without duplicates removal and visualisation on UCSC Genome Browser - stacked bars rather than sharp-shaped peaks suggested overamplification)
 
 module load samtools
 samtools view -bF 4 vl0214.bam > vl0214_filtered.bam

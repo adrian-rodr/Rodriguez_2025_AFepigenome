@@ -23,7 +23,7 @@ library(ggplot2)
 
 
 
-setwd(".")
+setwd("Rodriguez_2025_AFepigenome/ChIP-seq_basic_processing")
 
 s12b_SR_LA_peaks.narrowPeak <- read.csv('12b_SR_LA_peaks.narrowPeak', sep = '\t', header = FALSE)
 s12b_SR_RA_peaks.narrowPeak <- read.csv('12b_SR_RA_peaks.narrowPeak', sep = '\t', header = FALSE)

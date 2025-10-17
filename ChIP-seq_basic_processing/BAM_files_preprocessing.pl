@@ -15,7 +15,7 @@ my $results_dir=$jobs_dir."peaks/";
 my @tmp; my @jobs; my @tmp2; my @all=();
 my ($lane, $i, $line, $jobfile, $string, $jobname, $jobid, $filename, $done);
 $i=0;#Line counter
-open (IN, "AF_Adrian_samples_PeakCalling_2ndBatch_1InputTest.txt") || die "Could not open input file!\n";
+open (IN, "AF_samples_for_PeakCalling.txt") || die "Could not open input file!\n";
   while (<IN>) {
      chomp ($_);
      $i++;
