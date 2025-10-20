@@ -12,8 +12,11 @@ library(dplyr)
 ##### Definition of reg. regions #########
 ##########################################
 
+## Genrich tool (https://github.com/jsh58/Genrich) was used to call peaks for multiple replicates in each sample group collectively.
+## https://github.com/jsh58/Genrich
 
-setwd("/Rodriguez_2025_AFepigenome/Genrich_RegRegions_definition/")
+
+setwd("Rodriguez_2025_AFepigenome/Genrich_RegRegions_definition/")
 
 
 AF_LA_Genrich_greylistExcluded_g10 <- as.data.frame(read.table("AF_LA_Genrich_greylistExcluded_g10.bed",header = FALSE, sep="\t",stringsAsFactors=FALSE))
@@ -26,18 +29,6 @@ AF_LA_Genrich_greylistExcluded_g10_length <- AF_LA_Genrich_greylistExcluded_g10$
 SR_RA_Genrich_greylistExcluded_g10_length <- SR_RA_Genrich_greylistExcluded_g10$V3 - SR_RA_Genrich_greylistExcluded_g10$V2
 SR_LA_Genrich_greylistExcluded_g10_length <- SR_LA_Genrich_greylistExcluded_g10$V3 - SR_LA_Genrich_greylistExcluded_g10$V2
 
-AF_Genrich_greylistExcluded_g10 <- as.data.frame(read.table("AF_Genrich_greylistExlcuded_g10.bed",header = FALSE, sep="\t",stringsAsFactors=FALSE))
-SR_Genrich_greylistExcluded_g10 <- as.data.frame(read.table("SR_Genrich_greylistExcluded_g10.bed",header = FALSE, sep="\t",stringsAsFactors=FALSE))
-AF_Genrich_greylistExcluded_g10_length <- AF_Genrich_greylistExcluded_g10$V3 - AF_Genrich_greylistExcluded_g10$V2
-SR_Genrich_greylistExcluded_g10_length <- SR_Genrich_greylistExcluded_g10$V3 - SR_Genrich_greylistExcluded_g10$V2
-
-
-
-AF_Genrich_greylistExcluded_g10_length <- melt(AF_Genrich_greylistExcluded_g10_length)
-AF_Genrich_greylistExcluded_g10_length$class <- "AF"
-
-SR_Genrich_greylistExcluded_g10_length <- melt(SR_Genrich_greylistExcluded_g10_length)
-SR_Genrich_greylistExcluded_g10_length$class <- "SR"
 
 AF_RA_Genrich_greylistExcluded_g10_length <- melt(AF_RA_Genrich_greylistExcluded_g10_length)
 AF_RA_Genrich_greylistExcluded_g10_length$class <- "AF_RA"
