@@ -19,7 +19,7 @@ The above scripts are provided as-is for transparency. They were written for exe
 
 Scripts and files can be found in `Genrich_RegRegions_definition` directory.
 
-[`Genrich_Reg_regions_across_sample_type.R`] produces regulatory regions plots presented in S1d. 
+[`Genrich_Reg_regions_across_sample_type.R`] produces regulatory regions plots presented in S1d-f. 
 
 ## Differential analysis of ChIP-seq data with standard methods
 
