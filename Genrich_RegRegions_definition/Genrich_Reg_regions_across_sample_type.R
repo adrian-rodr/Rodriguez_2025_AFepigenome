@@ -56,11 +56,6 @@ df_avg <- peaksets_lengths %>%
 print(df_avg)
 
 
-peaksets_lengths <- rbind(AF_Genrich_greylistExcluded_g10_length,SR_Genrich_greylistExcluded_g10_length)
-ggplot(peaksets_lengths, aes(x=class, y=value)) + geom_boxplot(aes(fill=class),outlier.shape=NA) + scale_y_continuous("Peak length (bp)",limits = c(0, 1500)) + scale_x_discrete("Subgroup") + theme_classic() + theme(axis.text.x = element_text(angle=45, hjust = 1)) + scale_fill_manual(values = c("#F4997F","#43B9D1"))                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-ggplot(peaksets_lengths, aes(x=class, y=value)) + geom_boxplot(aes(fill=class)) + scale_y_continuous("Peak length (bp)") + scale_x_discrete("Subgroup") + theme_classic() + theme(axis.text.x = element_text(angle=45, hjust = 1)) + scale_fill_manual(values = c("#F4997F","#43B9D1"))                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-
-
 Number_of_peaks<-read.csv("Number_of_peaks_Genrich.csv")
 
 # 📊 Figure S1d
@@ -68,6 +63,24 @@ ggplot(Number_of_peaks, aes(x=(factor(Group)), y=Enriched.peaks, fill=X)) +
   geom_bar(stat="identity", position="stack", color="black") +
   scale_fill_manual(values = c("grey","grey","grey","grey","#D85B74","#E3D081","#7298bc","#91c7b1")) + theme_classic() + scale_y_continuous("Sample group peaks")
 
+
+## Regulatory regions distance to TSSs
+
+# 📊 Figure S1f
+# The TSS distance plots were produced using the Python script control_plots.py.
+# To recreate the Python enivronment: 
+# module load anaconda3
+# conda env create -f bedtools_py.yaml
+# conda activate plots_env
+# python control_plots.py \
+#   -i AF_LA_Genrich_greylistExcluded_g10.bed AF_RA_Genrich_greylistExcluded_g10.bed SR_LA_Genrich_greylistExcluded_g10.bed SR_RA_Genrich_greylistExcluded_g10.bed \
+#   -l AFLA-Atria AFRA-Atria SRLA-Atria SRRA-Atria \
+#   -t "AF dataset - H3K27ac" \
+#   -o out-barplot.svg out-boxplot.svg out-tss.svg  \
+#   -tss TSS.biomart.Homo_sapiens.bed \
+#   --groupby "Tissues=Atria"
+
+# The above will output figure in .svg format
 
 
 
