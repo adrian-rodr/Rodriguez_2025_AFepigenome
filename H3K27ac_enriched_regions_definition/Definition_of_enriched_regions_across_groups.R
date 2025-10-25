@@ -18,7 +18,7 @@ library(clusterProfiler)
 
 # 📊 Figures S1b and S1c
 
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/")
+setwd("Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/")
 
 AF_dataset_samples_details_Nov23 <- read.table("AF_dataset_libraries_peaks_metadata_2.txt", sep="\t",header=TRUE)
 
@@ -34,7 +34,7 @@ print(df_avg)
 
 #Explore peaks length per sample
 
-setwd("/Rodriguez_2025_AFepigenome/ChIP-seq_basic_processing/")
+setwd("../ChIP-seq_basic_processing/")
 vl0029_25_AF_RA <- as.data.frame(read.table("25_AF_LA_peaks.narrowPeak",header = FALSE, sep="\t",stringsAsFactors=FALSE))
 vl0214_2231_AF_RA <- as.data.frame(read.table("2231_AF_RA_peaks.narrowPeak",header = FALSE, sep="\t",stringsAsFactors=FALSE))
 vl0258_31_AF_RA <- as.data.frame(read.table("31_AF_RA_peaks.narrowPeak",header = FALSE, sep="\t",stringsAsFactors=FALSE))
@@ -47,7 +47,6 @@ vl0212_47_AF_LA <- as.data.frame(read.table("47_AF_LA_peaks.narrowPeak",header =
 vl0215_31_AF_LA <- as.data.frame(read.table("31_AF_LA_peaks.narrowPeak",header = FALSE, sep="\t",stringsAsFactors=FALSE))
 vl0256_2231_AF_LA <- as.data.frame(read.table("2231_AF_LA_peaks.narrowPeak",header = FALSE, sep="\t",stringsAsFactors=FALSE))
 vl0257_313_AF_LA <- as.data.frame(read.table("313_AF_LA_peaks.narrowPeak",header = FALSE, sep="\t",stringsAsFactors=FALSE))
-vl0327_18_AF_LA <- as.data.frame(read.table("18_AF_LA_peaks.narrowPeak",header = FALSE, sep="\t",stringsAsFactors=FALSE))
 vl0027_12b_SR_RA <- as.data.frame(read.table("12b_SR_RA_peaks.narrowPeak",header = FALSE, sep="\t",stringsAsFactors=FALSE))
 vl0031_27_SR_RA <- as.data.frame(read.table("27_SR_RA_peaks.narrowPeak",header = FALSE, sep="\t",stringsAsFactors=FALSE))
 vl0218_33_SR_RA <- as.data.frame(read.table("33_SR_RA_peaks.narrowPeak",header = FALSE, sep="\t",stringsAsFactors=FALSE))
@@ -69,7 +68,6 @@ vl0212_47_AF_LA_length <- vl0212_47_AF_LA$V3 - vl0212_47_AF_LA$V2
 vl0215_31_AF_LA_length <- vl0215_31_AF_LA$V3 - vl0215_31_AF_LA$V2
 vl0256_2231_AF_LA_length <- vl0256_2231_AF_LA$V3 - vl0256_2231_AF_LA$V2
 vl0257_313_AF_LA_length <- vl0257_313_AF_LA$V3 - vl0257_313_AF_LA$V2
-vl0327_18_AF_LA_length <- vl0327_18_AF_LA$V3 - vl0327_18_AF_LA$V2
 vl0027_12b_SR_RA_length <- vl0027_12b_SR_RA$V3 - vl0027_12b_SR_RA$V2
 vl0031_27_SR_RA_length <- vl0031_27_SR_RA$V3 - vl0031_27_SR_RA$V2
 vl0218_33_SR_RA_length <- vl0218_33_SR_RA$V3 - vl0218_33_SR_RA$V2
@@ -91,7 +89,6 @@ vl0212_47_AF_LA_length <- melt(vl0212_47_AF_LA_length)
 vl0215_31_AF_LA_length <- melt(vl0215_31_AF_LA_length)
 vl0256_2231_AF_LA_length <- melt(vl0256_2231_AF_LA_length)
 vl0257_313_AF_LA_length <- melt(vl0257_313_AF_LA_length)
-vl0327_18_AF_LA_length <- melt(vl0327_18_AF_LA_length)
 vl0027_12b_SR_RA_length <- melt(vl0027_12b_SR_RA_length)
 vl0031_27_SR_RA_length<- melt(vl0031_27_SR_RA_length)
 vl0218_33_SR_RA_length<- melt(vl0218_33_SR_RA_length)
@@ -113,7 +110,6 @@ vl0212_47_AF_LA_length$sample <- "vl0212_47_AF_LA"
 vl0215_31_AF_LA_length$sample <- "vl0215_31_AF_LA"
 vl0256_2231_AF_LA_length$sample <- "vl0256_2231_AF_LA"
 vl0257_313_AF_LA_length$sample <- "vl0257_313_AF_LA"
-vl0327_18_AF_LA_length$sample <- "vl0327_18_AF_LA"
 vl0027_12b_SR_RA_length$sample <- "vl0027_12b_SR_RA"
 vl0031_27_SR_RA_length$sample <- "vl0031_27_SR_RA"
 vl0218_33_SR_RA_length$sample<- "vl0218_33_SR_RA"
@@ -135,7 +131,6 @@ vl0212_47_AF_LA_length$sampleid <- "47-AF-LA"
 vl0215_31_AF_LA_length$sampleid <- "31-AF-LA"
 vl0256_2231_AF_LA_length$sampleid <- "2231-AF-LA"
 vl0257_313_AF_LA_length$sampleid <- "313-AF-LA"
-vl0327_18_AF_LA_length$sampleid <- "18-AF-LA"
 vl0027_12b_SR_RA_length$sampleid <- "12b-SR-RA"
 vl0031_27_SR_RA_length$sampleid <- "27-SR-RA"
 vl0218_33_SR_RA_length$sampleid<- "33-SR-RA"
@@ -157,7 +152,6 @@ mean(vl0212_47_AF_LA_length$value)
 mean(vl0215_31_AF_LA_length$value)
 mean(vl0256_2231_AF_LA_length$value)
 mean(vl0257_313_AF_LA_length$value)
-mean(vl0327_18_AF_LA_length$value)
 mean(vl0027_12b_SR_RA_length$value)
 mean(vl0031_27_SR_RA_length$value)
 mean(vl0218_33_SR_RA_length$value)
@@ -179,7 +173,6 @@ vl0212_47_AF_LA_length$class <- "AF-LA"
 vl0215_31_AF_LA_length$class <- "AF-LA"
 vl0256_2231_AF_LA_length$class <- "AF-LA"
 vl0257_313_AF_LA_length$class <- "AF-LA"
-vl0327_18_AF_LA_length$class <- "AF-LA"
 vl0027_12b_SR_RA_length$class <- "SR-RA"
 vl0031_27_SR_RA_length$class <- "SR-RA"
 vl0218_33_SR_RA_length$class<- "SR-RA"
@@ -216,7 +209,7 @@ sample_peakset_lengths_boxplot_nooutliers # 📊 Figure S1c
 #Explore correlation across samples and distribution in multidimensional space
 
 
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/")
+setwd("../H3K27ac_enriched_regions_definition/")
 
 
 load("DbaCountMatrix_AF_genrich_updated.RData") #Upload DBA object using count matrix with Genrich peaks as reference (improves visualisation)
@@ -229,7 +222,7 @@ dba.plotPCA(matrix,DBA_TISSUE:DBA_CONDITION,vColors = c("#7298BC","#91C7B1","#D8
 
 #Correlation heatmap
 
-load("/Rodriguez_2025_AFepigenome/ChIP-seq_basic_processing/AF_final_dataset_H3K27ac_Dec23_dba.RData") #Upload DBA object as generated by DiffBind (consensus peakset across samples used as reference) - as generated in ChIP-seq_basic_processing/ChIPseq_DiffEnrich_Analysis_DiffBind_TCseq.R script 
+load("../ChIP-seq_basic_processing/AF_final_dataset_H3K27ac_Dec23_dba.RData") #Upload DBA object as generated by DiffBind (consensus peakset across samples used as reference) - as generated in ChIP-seq_basic_processing/ChIPseq_DiffEnrich_Analysis_DiffBind_TCseq.R script 
 AF_final_dataset_H3K27ac_Dec23_dba <- dba(AF_final_dataset_H3K27ac_Dec23_dba)
 ### H3K27ac correlation plot --> heatmap based on count scores (corrected by read density)
 debug(dba.plotHeatmap)
@@ -263,7 +256,7 @@ corr_values_heatmap # 📊 Figure 1b
 
 ## AFLA
 
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/AF_LA_enriched_peaks")
+setwd("AF_LA_enriched_peaks")
 myFiles <- list.files(pattern="*.bed")
 
 #AFLA
@@ -785,15 +778,14 @@ peaksets_lengths_AF_LA_pairwise <- rbind(diff_12b_SR_RA_vs_2231_AF_LA_c2.0_cond2
 
 sample_peakset_lengths_boxplot <- ggplot(peaksets_lengths_AF_LA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.size = 0.05) + scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_text(angle=45, hjust = 1) )  + scale_fill_manual(values=c('#D85B74')) + theme(axis.text.x = element_blank())                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 sample_peakset_lengths_boxplot
-sample_peakset_lengths_boxplot_nooutliers <- ggplot(peaksets_lengths_AF_LA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.shape=NA) + coord_cartesian(ylim = c(0, 2500))+ scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_text(angle=45, hjust = 1) )  + scale_fill_manual(values=c('#D85B74'))    
-sample_peakset_lengths_boxplot_nooutliers
+
 sample_peakset_lengths_boxplot_nooutliers_noxaxis <- ggplot(peaksets_lengths_AF_LA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.shape=NA) + coord_cartesian(ylim = c(300, 2200))+ scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_blank())  + scale_fill_manual(values=c('#D85B74'))    
 sample_peakset_lengths_boxplot_nooutliers_noxaxis
 
 
 #AF-RA
 
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/AF_RA_enriched_peaks")
+setwd("../AF_RA_enriched_peaks")
 myFiles <- list.files(pattern="*.bed")
 
 diff_18_AF_RA_vs_12b_SR_LA_c2.0_cond1.bed<- as.data.frame(read.table("diff_18_AF_RA_vs_12b_SR_LA_c2.0_cond1.bed",skip=1, header = FALSE, sep="\t",stringsAsFactors=FALSE))
@@ -1307,17 +1299,15 @@ peaksets_lengths_AF_RA_pairwise <- rbind(diff_18_AF_RA_vs_12b_SR_LA_c2.0_cond1.b
                                          diff_313_AF_RA_vs_47_AF_LA_c2.0_cond1.bed_length)
 
 sample_peakset_lengths_boxplot <- ggplot(peaksets_lengths_AF_RA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.size = 0.05) + scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_text(angle=45, hjust = 1) )  + scale_fill_manual(values=c('#E3D081'))  + theme(axis.text.x = element_blank())                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-
 sample_peakset_lengths_boxplot
-sample_peakset_lengths_boxplot_nooutliers <- ggplot(peaksets_lengths_AF_RA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.shape=NA) + coord_cartesian(ylim = c(0, 1750))+ scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_text(angle=45, hjust = 1) ) + scale_fill_manual(values=c('#E3D081'))        
-sample_peakset_lengths_boxplot_nooutliers
+
 sample_peakset_lengths_boxplot_nooutliers_noxaxis <- ggplot(peaksets_lengths_AF_RA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.shape=NA) + coord_cartesian(ylim = c(300, 1750))+ scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_blank() ) + scale_fill_manual(values=c('#E3D081'))        
 sample_peakset_lengths_boxplot_nooutliers_noxaxis
 
 
 #SR-LA
 
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/SR_LA_enriched_peaks")
+setwd("../SR_LA_enriched_peaks")
 myFiles <- list.files(pattern="*.bed")
 
 
@@ -1716,10 +1706,8 @@ peaksets_lengths_SR_LA_pairwise <- rbind(diff_12b_SR_RA_vs_12b_SR_LA_c2.0_cond2.
                                          diff_47_AF_LA_vs_45_SR_LA_c2.0_cond2.bed_length)
 
 sample_peakset_lengths_boxplot <- ggplot(peaksets_lengths_SR_LA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.size = 0.05) + scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_text(angle=45, hjust = 1) )  + scale_fill_manual(values=c('#7298BC')) + theme(axis.text.x = element_blank())                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-
 sample_peakset_lengths_boxplot
-sample_peakset_lengths_boxplot_nooutliers <- ggplot(peaksets_lengths_SR_LA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.shape=NA) + coord_cartesian(ylim = c(0, 1500))+ scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_text(angle=45, hjust = 1) ) + scale_fill_manual(values=c('#7298BC'))        
-sample_peakset_lengths_boxplot_nooutliers
+
 sample_peakset_lengths_boxplot_nooutliers <- ggplot(peaksets_lengths_SR_LA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.shape=NA) + coord_cartesian(ylim = c(300, 1500))+ scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_blank() ) + scale_fill_manual(values=c('#7298BC'))        
 sample_peakset_lengths_boxplot_nooutliers
 
@@ -1727,7 +1715,7 @@ sample_peakset_lengths_boxplot_nooutliers
 
 #SR-RA
 
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/SR_RA_enriched_peaks")
+setwd("../SR_RA_enriched_peaks")
 myFiles <- list.files(pattern="*.bed")
 
 
@@ -2127,10 +2115,7 @@ peaksets_lengths_SR_RA_pairwise <- rbind(diff_12b_SR_RA_vs_12b_SR_LA_c2.0_cond1.
 
 sample_peakset_lengths_boxplot <- ggplot(peaksets_lengths_SR_RA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.size = 0.05) + scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_text(angle=45, hjust = 1) )  + scale_fill_manual(values=c('#91C7B1')) + theme(axis.text.x = element_blank())                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 sample_peakset_lengths_boxplot
-sample_peakset_lengths_boxplot_nooutliers <- ggplot(peaksets_lengths_SR_RA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.shape=NA) + coord_cartesian(ylim = c(0, 1000))+ scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_text(angle=45, hjust = 1) ) + scale_fill_manual(values=c('#91C7B1'))        
-sample_peakset_lengths_boxplot_nooutliers
-sample_peakset_lengths_boxplot_nooutliers <- ggplot(peaksets_lengths_SR_RA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.shape=NA) + coord_cartesian(ylim = c(0, 2500))+ scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_text(angle=45, hjust = 1) ) + scale_fill_manual(values=c('#91C7B1'))        
-sample_peakset_lengths_boxplot_nooutliers
+
 sample_peakset_lengths_boxplot_nooutliers_noxaxis <- ggplot(peaksets_lengths_SR_RA_pairwise, aes(x=sample, y=value)) + geom_boxplot(aes(fill=group),outlier.shape=NA) + coord_cartesian(ylim = c(300, 1030))+ scale_y_continuous("Peak length (bp)") + scale_x_discrete("enriched_peakset_comparison") + theme_classic() + theme(axis.text.x = element_blank() ) + scale_fill_manual(values=c('#91C7B1'))        
 sample_peakset_lengths_boxplot_nooutliers_noxaxis
 
@@ -2140,7 +2125,7 @@ sample_peakset_lengths_boxplot_nooutliers_noxaxis
 
 ### Definition of H3K27ac-enriched regions in each sample group
 # 1) Collate pairwise comparisons for each category
-# 2) Filter peaksets with Genrich peaks (greylisted regions have been previously removed in these)
+# 2) Filter peaksets with Genrich peaks (greylisted regions have been removed in these a priori)
 # 3) Overlap across categories and retain unique peaks only 
 
 #################################################################################################################################################################
@@ -2151,7 +2136,7 @@ sample_peakset_lengths_boxplot_nooutliers_noxaxis
 
 
 #AF-RA
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/AF_RA_enriched_peaks")
+setwd("../AF_RA_enriched_peaks")
 AF_RA_enriched_files <- list.files(pattern = "bed")
 length(AF_RA_enriched_files) #84
 #Prepare empty df file with just header
@@ -2174,7 +2159,7 @@ plot(DBA_AF_RA_enriched_consensus_olap.rate,type='b',ylab='# peaks',xlab='Overla
 
 
 #AF-LA
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/AF_LA_enriched_peaks")
+setwd("../AF_LA_enriched_peaks")
 AF_LA_enriched_files <- list.files(pattern = "bed")
 length(AF_LA_enriched_files) #84
 #Prepare empty df file with just header
@@ -2197,7 +2182,7 @@ plot(DBA_AF_LA_enriched_consensus_olap.rate,type='b',ylab='# peaks',xlab='Overla
 
 
 #SR-RA
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/SR_RA_enriched_peaks")
+setwd("../SR_RA_enriched_peaks")
 SR_RA_enriched_files <- list.files(pattern = "bed")
 length(SR_RA_enriched_files) #64
 #Prepare empty df file with just header
@@ -2220,7 +2205,7 @@ plot(DBA_SR_RA_enriched_consensus_olap.rate,type='b',ylab='# peaks',xlab='Overla
 
 
 #SR-LA
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/SR_LA_enriched_peaks")
+setwd("../SR_LA_enriched_peaks")
 SR_LA_enriched_files <- list.files(pattern = "bed")
 length(SR_LA_enriched_files) #64
 #Prepare empty df file with just header
@@ -2243,7 +2228,7 @@ plot(DBA_SR_LA_enriched_consensus_olap.rate,type='b',ylab='# peaks',xlab='Overla
 
 
 #AF
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/AF_enriched_peaks")
+setwd("../AF_enriched_peaks")
 AF_enriched_files <- list.files(pattern = "bed")
 length(AF_enriched_files) #96
 #Prepare empty df file with just header
@@ -2265,7 +2250,7 @@ plot(DBA_AF_enriched_consensus_olap.rate,type='b',ylab='# peaks',xlab='Overlap a
 
 
 #SR
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/SR_enriched_peaks")
+setwd("../SR_enriched_peaks")
 SR_enriched_files <- list.files(pattern = "bed")
 length(SR_enriched_files) #96
 #Prepare empty df file with just header
@@ -2295,10 +2280,6 @@ plot(DBA_SR_enriched_consensus_olap.rate,type='b',ylab='# peaks',xlab='Overlap a
 
 #### Re-define peaksets but correcting for peaks redundancy using Genrich peaks (to subset larger peaks into smaller ones) --> using bedtools intersect
 ### Greylisted regions have been removed from the Genrich peaks
-
-
-
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/")
 
 #AF-RA-enriched
 DBA_AF_RA_enriched_consensus_minOverlap35_peaks
@@ -2354,6 +2335,7 @@ write.table(DBA_SR_enriched_consensus_minOverlap24_peaks_df, "DBA_SR_enriched_co
 # - Output files will be used as input in the next R step.
 
 # RUN IN TERMINAL:
+# (Genrich peaksets found in 'H3K27ac_enriched_regions_definition' directory
 
 # module load bedtools 
 # bedtools intersect -a DBA_AF_LA_enriched_consensus.bed -b AF_LA_Genrich_greylistExcluded_g10.bed > DBA_AF_LA_enriched_consensus_Genrich_filtered.bed
@@ -2372,7 +2354,7 @@ write.table(DBA_SR_enriched_consensus_minOverlap24_peaks_df, "DBA_SR_enriched_co
 ## Get rid of overlapping peaks to define final peaksets in each category
 
 
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/")
+setwd("Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/")
 
 
 #AF-RA-enriched
@@ -2440,7 +2422,6 @@ myV <- plotVenn(nVennObj = myV, outFile="VennDiagram_samplegroups_peaksets_updat
 showSVG(nVennObj = myV, setColor= c('#E3D081', '#D85B74', '#91C7B1', '#7298BC'), outFile="VennDiagram_samplegroups_peaksets_updatedAug24.svg")
 
 
-setwd("/Users/adrianrodriguez/Downloads")
 library(nVennR)
 myV <- createVennObj(nSets = 2, sNames = c('AF', 'SR'), 
                      sSizes = c(0, 998, 855, 264))
@@ -2626,7 +2607,7 @@ colorder4 <- c(AF, SR)
 
 
 data <- read.delim("genrich_c2_merged_fpkm_normalized.csv", header=T, sep="\t")
-# "genrich_c2_merged_fpkm_normalized.csv" is not stored on GitHub in its uncompressed form.
+# "genrich_c2_merged_fpkm_normalized.csv" is stored on GitHub in its uncompressed form.
 # Please make sure to unzip this file locally before running the script. 
 
 
@@ -3021,7 +3002,7 @@ ggplot(df, aes(x=sample_type, y=fpkm, fill=sample_type)) +
 
 ## Gene Ontology Analysis 
 
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/geneToPeaks")
+setwd("Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/geneToPeaks")
 
 
 #GREAT region-to-gene association rule was used with default parameters to associate enriched regions to proximal genes (https://great.stanford.edu/great/public/html/)
@@ -3042,7 +3023,7 @@ AFRA_enriched_peaks_genes_names <- AFRA_enriched_peaks_genes[,1]
 ##############
 
 
-setwd("/Rodriguez_2025_AFepigenome/Genrich_RegRegions_definition/geneToPeaks")
+setwd("../../Genrich_RegRegions_definition/geneToPeaks")
 
 
 AFLA_background_genes <- read.delim(file="AFLA_Genrich_genes.txt", header = FALSE, sep = "")
@@ -3058,7 +3039,7 @@ SRLA_background_genes <- read.delim(file="SRLA_Genrich_genes_b.txt", header = FA
 SRLA_background_genes_names <- SRLA_background_genes[,1]
 
 
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/")
+setwd("../../H3K27ac_enriched_regions_definition/")
 
 
 
@@ -3231,6 +3212,27 @@ GOs_BP_heatmap_SRLAtop10 <- pheatmap(t(GO_BP_matrix_df_unmelted_scaled_SRLA_top1
 
 
 
+#################################################################################################################################################################
+
+## Enriched peaksets distance to TSSs
+
+# 📊 Figure S2c
+# The TSS distance plots were produced using the Python script control_plots.py.
+# To recreate the Python enivronment: 
+# module load anaconda3
+# conda env create -f bedtools_py.yaml
+# conda activate plots_env
+# python control_plots.py \
+#   -i AF_LA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered.bed AF_RA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered.bed SR_LA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered.bed SR_RA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered.bed \
+#   -l AFLA-Atria AFRA-Atria SRLA-Atria SRRA-Atria \
+#   -t "AF dataset - H3K27ac" \
+#   -o out-barplot.svg out-boxplot.svg out-tss.svg  \
+#   -tss TSS.biomart.Homo_sapiens.bed \
+#   --groupby "Tissues=Atria"
+
+# The above will output figure in .svg format
+
+
 
 #################################################################################################################################################################
 
@@ -3238,7 +3240,7 @@ GOs_BP_heatmap_SRLAtop10 <- pheatmap(t(GO_BP_matrix_df_unmelted_scaled_SRLA_top1
 # Association of H3K27ac enrichment with differential gene expression across sample groups
 
 
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/")
+setwd("Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/")
 
 SRLA_enriched_peaks_genes <- read.delim(file="./geneToPeaks/SR_LA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered.txt", header = TRUE, sep = "")
 SRRA_enriched_peaks_genes <- read.delim(file="./geneToPeaks/SR_RA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered.txt", header = TRUE, sep = "")
@@ -3251,9 +3253,9 @@ SR_enriched_peaks_genes <- read.delim(file="./geneToPeaks/SR_enriched_nonoverlap
 
 
 # Sets of DEGs
-setwd("/Rodriguez_2025_AFepigenome/RNAseq_DGE_analysis/")
+setwd("../RNAseq_DGE_analysis/")
 
-## NOTE: The input DEG files used below (e.g., files ending in "SRup", "AFup", "AFRAup", "SRRAup", etc.) were generated by subsetting the full DESeq2 output files according to the direction of differential expression.
+## NOTE: The input DEG files used below (e.g., files ending in "SRup", "AFup", "AFRAup", "SRRAup", etc.) were generated by subsetting the full DESeq2 output files according to the direction of differential expression. (Supplementary Table 4, padj <0.05)
 ## These filtered text files were obtained during the analysis performed in RNAseq_DGE_analysis/RNAseq_DE_Analysis.R
 
 AFvsSR_SRup <- read.delim("DEseq2_results_SRup.txt", header = FALSE, sep = "")
@@ -3286,7 +3288,7 @@ intersectt <- function (x, y)
 }
 
 
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/")
+setwd("../H3K27ac_enriched_regions_definition/")
 
 #Look at intersect of AF-enriched peaks associated genes and AFvsSR_AFup genes
 AFvsSR_AFup_genes_AF_enriched_peaks_genes <- intersectt (AFvsSR_AFup_genes,AF_enriched_peaks_genes[,1])  
@@ -3715,15 +3717,13 @@ SRLAvsAFLA_AFLAup_genes_SRLA_enriched_peaks_genes_df$p.value
 #### Fisher correlation plots ####
 
 
-setwd("/Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/")
-
-fihersexacttest_rnaseqchipseqolaps_subsetting_AFvsSR=read.csv("rnaseqchipseqolaps_subsetting_AFvsSR_log.csv", header=TRUE)
-fihersexacttest_rnaseqchipseqolaps_subsetting_AFvsSR
-fihersexacttest_rnaseqchipseqolaps_subsetting_AFvsSR <- melt(fihersexacttest_rnaseqchipseqolaps_subsetting_AFvsSR)
+setwd("Rodriguez_2025_AFepigenome/H3K27ac_enriched_regions_definition/")
 
 
-
-
+fihersexacttest_rnaseqchipseqolaps_subsetting=read.csv("rnaseqchipseqolaps_subsetting_log.csv", header=TRUE)
+fihersexacttest_rnaseqchipseqolaps_subsetting
+fihersexacttest_rnaseqchipseqolaps_subsetting <- melt(fihersexacttest_rnaseqchipseqolaps_subsetting)
+peaksets_orderforheatmaps <- c("AF.enriched","SR.enriched")
 DEGs_sets_order <- c("LA - AF up","LA - SR up","RA - AF up","RA - SR up")
 
 # 📊 Figure 3a
@@ -3741,6 +3741,11 @@ overlap_heatmap +scale_x_discrete(expand = c(0, 0)) + scale_y_discrete(expand = 
 
 
 
+
+fihersexacttest_rnaseqchipseqolaps_subsetting_AFvsSR=read.csv("rnaseqchipseqolaps_subsetting_AFvsSR_log.csv", header=TRUE)
+fihersexacttest_rnaseqchipseqolaps_subsetting_AFvsSR
+fihersexacttest_rnaseqchipseqolaps_subsetting_AFvsSR <- melt(fihersexacttest_rnaseqchipseqolaps_subsetting_AFvsSR)
+peaksets_orderforheatmaps <- c("AF.enriched","SR.enriched")
 DEGs_sets_order_AFvsSR <- c("AFvsSR_AFup","AFvsSR_SRup")
 
 # 📊 Figure S4d (left)
@@ -3756,7 +3761,6 @@ overlap_heatmap +scale_x_discrete(expand = c(0, 0)) + scale_y_discrete(expand = 
 #################################################################################################################################################################
 
 
-# Association of H3K27ac enrichment with differentially methylated regions (DMRs)
 
 
 
