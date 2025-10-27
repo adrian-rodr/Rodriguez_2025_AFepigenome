@@ -4,17 +4,6 @@ This archive contains processed files and scripts associated with **Rodriguez et
 
 The repository includes data derived from genome-wide sequencing and microarray analysis, as well as code used for downstream analyses and for generating the figures presented in the publication.
 
-Project structure:
-
-Rodriguez_2025_AFepigenome/
-├── ChIP-seq_basic_processing/
-├── Genrich_RegRegions_definition/
-├── H3K27ac_enriched_regions_definition/
-├── RNAseq_DGE_analysis/
-├── QPCR_data_analysis/
-├── DNAm_data_analysis/
-└── TF_enrichment_analysis/
-
 Each folder contains R scripts related to a specific analysis type. Most input files are stored within the corresponding folder. 
 All R scripts set the working directory to the project root (`Rodriguez_2025_AFepigenome`) and the corresponding analysis subfolder.
 Please edite the `setwd()` path in each script if you have saved the project root in a different location on your system.
