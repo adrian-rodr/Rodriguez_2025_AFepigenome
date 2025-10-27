@@ -3217,7 +3217,7 @@ GOs_BP_heatmap_SRLAtop10 <- pheatmap(t(GO_BP_matrix_df_unmelted_scaled_SRLA_top1
 ## Enriched peaksets distance to TSSs
 
 # 📊 Figure S2c
-# The TSS distance plots were produced using the Python script control_plots.py.
+# The TSS distance plots were produced using the Python script control_plots.py. (python scripts and Ensembl TSSs can be found in Rodriguez_2025_AFepigenome/Genrich_RegRegions_definition)
 # To recreate the Python enivronment: 
 # module load anaconda3
 # conda env create -f bedtools_py.yaml
@@ -3287,6 +3287,8 @@ intersectt <- function (x, y)
   c(u[!duplicated(unclass(u)) & (match(u, v, 0L) > 0L)], v[numeric()])
 }
 
+
+## Intersection across DEGs and H3K27ac-enriched regions produces the set of candidate loci with ahllmarks of gene dysregulation in AF patients (as shown in 📎 Supplementary Table 5)
 
 setwd("../H3K27ac_enriched_regions_definition/")
 
