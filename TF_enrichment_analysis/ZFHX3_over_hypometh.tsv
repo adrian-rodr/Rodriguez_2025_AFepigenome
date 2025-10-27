@@ -1,0 +1,11 @@
+motif_id	motif_alt_id	sequence_name	start	stop	strand	score	p-value	q-value	matched_sequence
+YATTTAATWAK	MEME-1	chr1	2408268	2408278	-	13.7946	1.66e-05	0.526	TGTTTAATTAC
+YATTTAATWAK	MEME-1	chr1	247008325	247008335	+	9.125	0.000159	1	TATCCATTCAT
+YATTTAATWAK	MEME-1	chr11	124898015	124898025	+	6.58929	0.000287	1	CGACCATTTAG
+YATTTAATWAK	MEME-1	chr9	95085422	95085432	+	5.83036	0.000411	1	CCTTTATTTAT
+YATTTAATWAK	MEME-1	chr11	116473837	116473847	-	4.42857	0.000842	1	GATTCATTAAT
+YATTTAATWAK	MEME-1	chr6	124683714	124683724	+	4.32143	0.000885	1	TATTCACTCAC
+
+# FIMO (Find Individual Motif Occurrences): Version 5.5.8 compiled on Jul 18 2025 at 16:18:34
+# The format of this file is described at https://meme-suite.org/meme/doc/fimo-output-format.html#tsv_results.
+# fimo --oc . --verbosity 1 --bgfile --nrdb-- --thresh 0.001 ZFHX3_motif_MEMEoutput.txt dmrs_dmrff_betanorm_Chris_DMRs_hypometh.bed.fa

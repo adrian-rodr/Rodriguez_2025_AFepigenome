@@ -463,7 +463,7 @@ CREB2_overBackground <- AFassocTFsoverbackground[AFassocTFsoverbackground$motif_
 PITX2_overBackground <- AFassocTFsoverbackground[AFassocTFsoverbackground$motif_alt_id == 'PITX2',]
 PRRX1_overBackground <- AFassocTFsoverbackground[AFassocTFsoverbackground$motif_alt_id == 'PRRX1',]
 HAND2_overBackground <- AFassocTFsoverbackground[AFassocTFsoverbackground$motif_alt_id == 'HAND2',]
-ZFHX3_overBackground <- read.table(file = 'ZFHX3_motif_overbackgrou.tsv', sep = '\t', header = TRUE)
+ZFHX3_overBackground <- read.table(file = 'ZFHX3_motif_overbackground.tsv', sep = '\t', header = TRUE)
 
 ETV1_overBackground <- ETV1_overBackground[ , c("sequence_name", "start", "stop")] #769
 TBX3_overBackground <- TBX3_overBackground[ , c("sequence_name", "start", "stop")] #1165
