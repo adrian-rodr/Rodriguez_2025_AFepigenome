@@ -35,16 +35,16 @@ perl configureHomer.pl -install hg38
 #### ChIP-seq H3K37ac data
 
 # AF-LA
-findMotifsGenome.pl AF_LA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered_chr_c2_edited2.bed hg38 AFLA_MotifOutput_GenrichBackground/ -size given -mask -bg AF_LA_Genrich_greylistExcluded_g10-edited3.bed
+findMotifsGenome.pl AF_LA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered_chr_c2_edited2.bed hg38 AFLA_MotifOutput_GenrichBackground/ -size given -mask -bg AF_LA_Genrich_greylistExcluded_g10-edite6.bed
 
 # AF-RA
-findMotifsGenome.pl AF_RA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered_chr_c2_edited2.bed hg38 AFRA_MotifOutput_GenrichBackground/ -size given -mask -bg AF_RA_Genrich_greylistExcluded_g10-edited3.bed
+findMotifsGenome.pl AF_RA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered_chr_c2_edited2.bed hg38 AFRA_MotifOutput_GenrichBackground/ -size given -mask -bg AF_RA_Genrich_greylistExcluded_g10-edited6.bed
 
 # SR-LA
-findMotifsGenome.pl SR_LA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered_chr_c2_edited2.bed hg38 SRLA_MotifOutput_GenrichBackground/ -size given -mask -bg SR_LA_Genrich_greylistExcluded_g10-edited3.bed
+findMotifsGenome.pl SR_LA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered_chr_c2_edited2.bed hg38 SRLA_MotifOutput_GenrichBackground/ -size given -mask -bg SR_LA_Genrich_greylistExcluded_g10-edited6.bed
 
 # SR-RA
-findMotifsGenome.pl SR_RA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered_chr_c2_edited2.bed hg38 SRRA_MotifOutput_GenrichBackground/ -size given -mask -bg SR_RA_Genrich_greylistExcluded_g10-edited3.bed
+findMotifsGenome.pl SR_RA_enriched_nonoverlappingwithallsets_GenrichGreylistedFiltered_chr_c2_edited2.bed hg38 SRRA_MotifOutput_GenrichBackground/ -size given -mask -bg SR_RA_Genrich_greylistExcluded_g10-edited6.bed
 
 
 #### DNAm data - Hypomethylated and hypermethylated DMRs
