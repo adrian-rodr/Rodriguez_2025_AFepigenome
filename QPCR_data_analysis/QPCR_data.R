@@ -4,6 +4,9 @@ library(ggsignif)
 library(ggplot2)
 library(dplyr)
 
+
+setwd("Rodriguez_2025_AFepigenome/QPCR_data_analysis")
+
 ###############################################
 ###############################################
 ############ QPCR data plots ##################
@@ -140,7 +143,7 @@ RTqPCR_220824_PITX2c_RA<- RTqPCR_220824_PITX2c[RTqPCR_220824_PITX2c$Anatomical_s
 RTqPCR_220824_PITX2c_LA<- RTqPCR_220824_PITX2c[RTqPCR_220824_PITX2c$Anatomical_side == "LA", ]
 
 t.test(RTqPCR_220824_PITX2c_LA$Relative_expression_TBPnorm, RTqPCR_220824_PITX2c_RA$Relative_expression_TBPnorm, alternative = "greater", var.equal = TRUE)
-#p val = 0.003793
+#p val = 0.008223
 
 
 RTqPCR_220824_BMP10_PLOT_TBPnorm <- ggplot(RTqPCR_220824_BMP10 , aes(y = Relative_expression_TBPnorm, x= factor(Anatomical_side,level=c("RA","LA")), fill = Individual_ID)) + 
@@ -165,11 +168,16 @@ RTqPCR_220824_BMP10_RA<- RTqPCR_220824_BMP10[RTqPCR_220824_BMP10$Anatomical_side
 RTqPCR_220824_BMP10_LA<- RTqPCR_220824_BMP10[RTqPCR_220824_BMP10$Anatomical_side == "LA", ]
 
 t.test(RTqPCR_220824_BMP10_RA$Relative_expression_TBPnorm, RTqPCR_220824_BMP10_LA$Relative_expression_TBPnorm, alternative = "greater", var.equal = TRUE)
-#p val = 0.003111
+#p val = 0.0006385
 
 
 
 # 📊 Figure 4 barplots
+
+
+
+###### Genes detected as AF-upregulated in main cohort
+
 
 ## NPPB
 
@@ -178,6 +186,7 @@ RTqPCR_220824_NPPB_SR <- RTqPCR_220824_NPPB[RTqPCR_220824_NPPB$Disease_status ==
 
 t_test_result <- t.test(RTqPCR_220824_NPPB_AF$Relative_expression_TBPnorm, RTqPCR_220824_NPPB_SR$Relative_expression_TBPnorm, alternative = "greater")
 t_test_result
+#p-value = 0.01119
 
 RTqPCR_220824_NPPB_TBPnorm <- ggplot(RTqPCR_220824_NPPB, 
                                      aes(x = factor(Disease_status, levels = c("AF", "SR")), 
@@ -228,9 +237,7 @@ RTqPCR_220824_VASH1_TBPnorm <- ggplot(RTqPCR_220824_VASH1,
                                           y = Relative_expression_TBPnorm)) +
   stat_summary(aes(fill = Disease_status), fun = mean, geom = "bar", colour = "black", width = 0.4) +
   geom_dotplot(aes(fill = Individual_ID), binaxis = "y", stackdir = "center", dotsize = 1.3) +
-  
-  # Custom bar colors for Disease_status
-  scale_fill_manual(
+    scale_fill_manual(
     name = "Individual_ID", 
     values = c(
       "AF" = "#FDE6E0", 
@@ -304,6 +311,7 @@ RTqPCR_220824_ANGPTL2_TBPnorm <- ggplot(RTqPCR_220824_ANGPTL2,
     y_position = 4.6, 
     annotations = "p = 0.05"
   )
+RTqPCR_220824_ANGPTL2_TBPnorm
 
 
 ## STRN
@@ -311,9 +319,9 @@ RTqPCR_220824_ANGPTL2_TBPnorm <- ggplot(RTqPCR_220824_ANGPTL2,
 RTqPCR_220824_STRN_AF <- RTqPCR_220824_STRN[RTqPCR_220824_STRN$Disease_status == "AF", ]
 RTqPCR_220824_STRN_SR <- RTqPCR_220824_STRN[RTqPCR_220824_STRN$Disease_status == "SR", ]
 
-t_test_result <- t.test(RTqPCR_220824_STRN_AF$Relative_expression_GAPDHnorm, RTqPCR_220824_STRN_SR$Relative_expression_GAPDHnorm, alternative = "greater")
+t_test_result <- t.test(RTqPCR_220824_STRN_AF$Relative_expression_TBPnorm, RTqPCR_220824_STRN_SR$Relative_expression_TBPnorm, alternative = "greater")
 t_test_result
-#pval 0.008994
+#pval 0.006
 
 RTqPCR_220824_STRN_TBPnorm <- ggplot(RTqPCR_220824_STRN, 
                                      aes(x = factor(Disease_status, levels = c("AF", "SR")), 
@@ -348,6 +356,7 @@ RTqPCR_220824_STRN_TBPnorm <- ggplot(RTqPCR_220824_STRN,
     y_position = 5.1, 
     annotations = "p = 0.006"
   )
+RTqPCR_220824_STRN_TBPnorm
 
 
 
@@ -394,13 +403,17 @@ RTqPCR_220824_LRRC32_TBPnorm <- ggplot(RTqPCR_220824_LRRC32,
     y_position = 1.02, 
     annotations = "p = 0.026"
   )
+RTqPCR_220824_LRRC32_TBPnorm
 
 
 ## SLC43A3
 
+data_analysis_dataframe_withdata_SLC43A3_AF <- data_analysis_dataframe_withdata_SLC43A3[data_analysis_dataframe_withdata_SLC43A3$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_SLC43A3_SR <- data_analysis_dataframe_withdata_SLC43A3[data_analysis_dataframe_withdata_SLC43A3$Disease_status == "SR", ]
+
 t_test_result <- t.test(data_analysis_dataframe_withdata_SLC43A3_AF$Relative_expression_TBPnorm, data_analysis_dataframe_withdata_SLC43A3_SR$Relative_expression_TBPnorm, alternative = "greater")
 t_test_result
-#pval  0.4918
+#pval  0.7998
 
 RTqPCR_SLC43A3_TBPnorm <- ggplot(data_analysis_dataframe_withdata_SLC43A3, 
                                  aes(x = factor(Disease_status, levels = c("AF", "SR")), 
@@ -432,18 +445,23 @@ RTqPCR_SLC43A3_TBPnorm <- ggplot(data_analysis_dataframe_withdata_SLC43A3,
     map_signif_level = FALSE, 
     step_increase = 0.1,    
     textsize = 4  ,
-    y_position = 0.63, 
-    annotations = "p = 0.49"
+    y_position = 13, 
+    annotations = "p = 0.8"
   )
+RTqPCR_SLC43A3_TBPnorm
 
 
 
 
 ## FOXS1
 
+data_analysis_dataframe_withdata_FOXS1_AF <- data_analysis_dataframe_withdata_FOXS1[data_analysis_dataframe_withdata_FOXS1$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_FOXS1_SR <- data_analysis_dataframe_withdata_FOXS1[data_analysis_dataframe_withdata_FOXS1$Disease_status == "SR", ]
+
+
 t_test_result <- t.test(data_analysis_dataframe_withdata_FOXS1_AF$Relative_expression_TBPnorm, data_analysis_dataframe_withdata_FOXS1_SR$Relative_expression_TBPnorm, alternative = "greater")
 t_test_result
-#pval 0.659
+#pval 0.8
 
 
 RTqPCR_FOXS1_TBPnorm <- ggplot(data_analysis_dataframe_withdata_FOXS1, 
@@ -474,13 +492,14 @@ RTqPCR_FOXS1_TBPnorm <- ggplot(data_analysis_dataframe_withdata_FOXS1,
     axis.title.y = element_text(size = 18),
     axis.text.y = element_text(size = 16)
   ) + geom_signif(
-    comparisons = list(c("AF", "SR")), # Pairwise comparisons
-    map_signif_level = FALSE, # Display significance levels (*, **, ***)
-    step_increase = 0.1,     # Adjust spacing between brackets
+    comparisons = list(c("AF", "SR")), 
+    map_signif_level = FALSE, 
+    step_increase = 0.1,     
     textsize = 4  ,
-    y_position = 1.21, # Adjust text size
-    annotations = "p = 0.66"
+    y_position = 20.5, 
+    annotations = "p = 0.8"
   )
+RTqPCR_FOXS1_TBPnorm
 
 
 ## SCX
@@ -489,7 +508,8 @@ RTqPCR_FOXS1_TBPnorm <- ggplot(data_analysis_dataframe_withdata_FOXS1,
 data_analysis_dataframe_withdata_SCX_AF <- data_analysis_dataframe_withdata_SCX[data_analysis_dataframe_withdata_SCX$Disease_status == "AF", ]
 data_analysis_dataframe_withdata_SCX_SR <- data_analysis_dataframe_withdata_SCX[data_analysis_dataframe_withdata_SCX$Disease_status == "SR", ]
 t_test_result <- t.test(data_analysis_dataframe_withdata_SCX_AF$Relative_expression_TBPnorm, data_analysis_dataframe_withdata_SCX_SR$Relative_expression_TBPnorm, alternative = "greater")
-
+t_test_result
+#p-value = 0.03847
 
 RTqPCR_SCX_TBPnorm <- ggplot(data_analysis_dataframe_withdata_SCX, 
                              aes(x = factor(Disease_status, levels = c("AF", "SR")), 
@@ -626,9 +646,13 @@ RTqPCR_220824_RGS6_TBPnorm + geom_signif(
 
 ## ANGPT1
 
+
+data_analysis_dataframe_withdata_ANGPT1_AF <- data_analysis_dataframe_withdata_ANGPT1[data_analysis_dataframe_withdata_ANGPT1$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_ANGPT1_SR <- data_analysis_dataframe_withdata_ANGPT1[data_analysis_dataframe_withdata_ANGPT1$Disease_status == "SR", ]
+
 t_test_result <- t.test(data_analysis_dataframe_withdata_ANGPT1_SR$Relative_expression_TBPnorm, data_analysis_dataframe_withdata_ANGPT1_AF$Relative_expression_TBPnorm, alternative = "greater")
 t_test_result
-#pval  0.7054
+#p-value = 0.2177
 
 RTqPCR_ANGPT1_TBPnorm <- ggplot(data_analysis_dataframe_withdata_ANGPT1, 
                                 aes(x = factor(Disease_status, levels = c("AF", "SR")), 
@@ -661,17 +685,20 @@ RTqPCR_ANGPT1_TBPnorm + geom_signif(
   map_signif_level = FALSE, 
   step_increase = 0.1,     
   textsize = 6  ,
-  y_position = 1.78, 
-  annotations = "p = 0.6425"
+  y_position = 8.3, 
+  annotations = "p = 0.2177"
 )
 
 
 
 ## BLM 
 
-t_test_result <- t.test(data_analysis_dataframe_withdata_BLM_SR$Relative_expression_GAPDHnorm, data_analysis_dataframe_withdata_BLM_AF$Relative_expression_GAPDHnorm, alternative = "greater")
+data_analysis_dataframe_withdata_BLM_AF <- data_analysis_dataframe_withdata_BLM[data_analysis_dataframe_withdata_BLM$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_BLM_SR <- data_analysis_dataframe_withdata_BLM[data_analysis_dataframe_withdata_BLM$Disease_status == "SR", ]
+
+t_test_result <- t.test(data_analysis_dataframe_withdata_BLM_SR$Relative_expression_TBPnorm, data_analysis_dataframe_withdata_BLM_AF$Relative_expression_TBPnorm, alternative = "greater")
 t_test_result
-#pval  0.8303
+#pval  0.2289
 
 RTqPCR_BLM_TBPnorm <- ggplot(data_analysis_dataframe_withdata_BLM, 
                              aes(x = factor(Disease_status, levels = c("AF", "SR")), 
@@ -704,17 +731,20 @@ RTqPCR_BLM_TBPnorm + geom_signif(
   map_signif_level = FALSE, 
   step_increase = 0.1, 
   textsize = 6  ,
-  y_position = 0.13, 
-  annotations = "p = 0.8"
+  y_position = 1.43, 
+  annotations = "p = 0.23"
 )
 
 
 
 ## NR2F1
 
+data_analysis_dataframe_withdata_NR2F1_AF <- data_analysis_dataframe_withdata_NR2F1[data_analysis_dataframe_withdata_NR2F1$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_NR2F1_SR <- data_analysis_dataframe_withdata_NR2F1[data_analysis_dataframe_withdata_NR2F1$Disease_status == "SR", ]
+
 t_test_result <- t.test(data_analysis_dataframe_withdata_NR2F1_SR$Relative_expression_TBPnorm, data_analysis_dataframe_withdata_NR2F1_AF$Relative_expression_TBPnorm, alternative = "greater")
 t_test_result
-#pval  0.2849
+#pval  0.1955
 
 RTqPCR_NR2F1_TBPnorm <- ggplot(data_analysis_dataframe_withdata_NR2F1, 
                                aes(x = factor(Disease_status, levels = c("AF", "SR")), 
@@ -746,9 +776,10 @@ RTqPCR_NR2F1_TBPnorm <- ggplot(data_analysis_dataframe_withdata_NR2F1,
     map_signif_level = FALSE, 
     step_increase = 0.1,     
     textsize = 6  ,
-    y_position = 4.05, 
-    annotations = "p = 0.28"
+    y_position = 145, 
+    annotations = "p = 0.2"
   )
+RTqPCR_NR2F1_TBPnorm
 
 
 
@@ -778,10 +809,8 @@ data_analysis_dataframe_withdata$Disease_AnatSide[data_analysis_dataframe_withda
 data_analysis_dataframe_withdata$Disease_AnatSide[data_analysis_dataframe_withdata$Sample %in% c("Sample1","Sample7","Sample9")] <- "AF-RA"
 data_analysis_dataframe_withdata$Disease_AnatSide[data_analysis_dataframe_withdata$Sample %in% c("Sample4","Sample6")] <- "SR-LA"
 data_analysis_dataframe_withdata$Disease_AnatSide[data_analysis_dataframe_withdata$Sample %in% c("Sample3","Sample5")] <- "SR-RA"
-data_analysis_dataframe_withdata_SCX_A <- data_analysis_dataframe_withdata[which (data_analysis_dataframe_withdata$Marker == "SCX_A"),]
 data_analysis_dataframe_withdata_SCX_B <- data_analysis_dataframe_withdata[which (data_analysis_dataframe_withdata$Marker == "SCX_B"),]
 data_analysis_dataframe_withdata_NPPB_AF008 <- data_analysis_dataframe_withdata[which (data_analysis_dataframe_withdata$Marker == "NPPB_AF008"),]
-data_analysis_dataframe_withdata_SCX_A <- data_analysis_dataframe_withdata_SCX_A[!is.na(data_analysis_dataframe_withdata_SCX_A$Norm_input), ]
 data_analysis_dataframe_withdata_SCX_B <- data_analysis_dataframe_withdata_SCX_B[!is.na(data_analysis_dataframe_withdata_SCX_B$Norm_input), ]
 data_analysis_dataframe_withdata_NPPB_AF008 <- data_analysis_dataframe_withdata_NPPB_AF008[!is.na(data_analysis_dataframe_withdata_NPPB_AF008$Norm_input), ]
 
@@ -982,7 +1011,11 @@ data_analysis_dataframe_withdata_NPPB_AFLA0013 <- data_analysis_dataframe_withda
 
 #### Regions detected as AF-enriched in main cohort 
 
+
 ### VASH1 
+
+data_analysis_dataframe_withdata_VASH1_B_AF <- data_analysis_dataframe_withdata_VASH1_B[data_analysis_dataframe_withdata_VASH1_B$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_VASH1_B_SR <- data_analysis_dataframe_withdata_VASH1_B[data_analysis_dataframe_withdata_VASH1_B$Disease_status == "SR", ]
 
 
 t_test_result <- t.test(data_analysis_dataframe_withdata_VASH1_B_AF$RelEnrich_Norm_GAPDH_Input, data_analysis_dataframe_withdata_VASH1_B_SR$RelEnrich_Norm_GAPDH_Input, alternative = "greater")
@@ -1022,10 +1055,13 @@ ChIPqPCR_VASH1_B_GAPDHInputnorm <- ggplot(data_analysis_dataframe_withdata_VASH1
     y_position = 4.3, # Adjust text size
     annotations = "p = 0.2829"
   )
+ChIPqPCR_VASH1_B_GAPDHInputnorm
 
 
 ### ANGPTL2
 
+data_analysis_dataframe_withdata_ANGPTL2_AFRA1622_AF <- data_analysis_dataframe_withdata_ANGPTL2_AFRA1622[data_analysis_dataframe_withdata_ANGPTL2_AFRA1622$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_ANGPTL2_AFRA1622_SR <- data_analysis_dataframe_withdata_ANGPTL2_AFRA1622[data_analysis_dataframe_withdata_ANGPTL2_AFRA1622$Disease_status == "SR", ]
 
 t_test_result <- t.test(data_analysis_dataframe_withdata_ANGPTL2_AFRA1622_AF$RelEnrich_Norm_GAPDH_Input, data_analysis_dataframe_withdata_ANGPTL2_AFRA1622_SR$RelEnrich_Norm_GAPDH_Input, alternative = "greater")
 t_test_result
@@ -1059,7 +1095,6 @@ ChIPqPCR_ANGPTL2_AFRA1622_GAPDHInputnorm <- ggplot(data_analysis_dataframe_withd
     axis.text.y = element_text(size = 14) 
   ) 
 
-
 ChIPqPCR_ANGPTL2_AFRA1622_GAPDHInputnorm + geom_signif(
   comparisons = list(c("AF", "SR")),
   map_signif_level = FALSE, 
@@ -1071,6 +1106,11 @@ ChIPqPCR_ANGPTL2_AFRA1622_GAPDHInputnorm + geom_signif(
 
 
 ### SLC43A3
+
+
+data_analysis_dataframe_withdata_SLC43A3_AF <- data_analysis_dataframe_withdata_SLC43A3[data_analysis_dataframe_withdata_SLC43A3$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_SLC43A3_SR <- data_analysis_dataframe_withdata_SLC43A3[data_analysis_dataframe_withdata_SLC43A3$Disease_status == "SR", ]
+
 
 t_test_result <- t.test(data_analysis_dataframe_withdata_SLC43A3_AF$RelEnrich_Norm_GAPDH_Input, data_analysis_dataframe_withdata_SLC43A3_SR$RelEnrich_Norm_GAPDH_Input, alternative = "greater")
 t_test_result
@@ -1116,6 +1156,8 @@ ChIPqPCR_SLC43A3_GAPDHInputnorm + geom_signif(
 
 ### FOXS1
 
+data_analysis_dataframe_withdata_FOXS1_AF <- data_analysis_dataframe_withdata_FOXS1[data_analysis_dataframe_withdata_FOXS1$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_FOXS1_SR <- data_analysis_dataframe_withdata_FOXS1[data_analysis_dataframe_withdata_FOXS1$Disease_status == "SR", ]
 
 t_test_result <- t.test(data_analysis_dataframe_withdata_FOXS1_AF$RelEnrich_Norm_GAPDH_Input, data_analysis_dataframe_withdata_FOXS1_SR$RelEnrich_Norm_GAPDH_Input, alternative = "greater")
 t_test_result
@@ -1161,6 +1203,9 @@ ChIPqPCR_FOXS1_GAPDHInputnorm + geom_signif(
 
 ### STRN
 
+data_analysis_dataframe_withdata_STRN_AF <- data_analysis_dataframe_withdata_STRN[data_analysis_dataframe_withdata_STRN$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_STRN_SR <- data_analysis_dataframe_withdata_STRN[data_analysis_dataframe_withdata_STRN$Disease_status == "SR", ]
+
 t_test_result <- t.test(data_analysis_dataframe_withdata_STRN_AF$RelEnrich_Norm_GAPDH_Input, data_analysis_dataframe_withdata_STRN_SR$RelEnrich_Norm_GAPDH_Input, alternative = "greater")
 t_test_result
 #pval  0.2727
@@ -1202,6 +1247,9 @@ ChIPqPCR_STRN_GAPDHInputnorm + geom_signif(
 
 
 ### LRRC32
+
+data_analysis_dataframe_withdata_LRRC32_AFLA0328_AF <- data_analysis_dataframe_withdata_LRRC32_AFLA0328[data_analysis_dataframe_withdata_LRRC32_AFLA0328$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_LRRC32_AFLA0328_SR <- data_analysis_dataframe_withdata_LRRC32_AFLA0328[data_analysis_dataframe_withdata_LRRC32_AFLA0328$Disease_status == "SR", ]
 
 t_test_result <- t.test(data_analysis_dataframe_withdata_LRRC32_AFLA0328_AF$RelEnrich_Norm_GAPDH_Input, data_analysis_dataframe_withdata_LRRC32_AFLA0328_SR$RelEnrich_Norm_GAPDH_Input, alternative = "greater")
 t_test_result
@@ -1249,8 +1297,11 @@ ChIPqPCR_LRRC32_GAPDHInputnorm + geom_signif(
 
 data_analysis_dataframe_withdata_SCX_B_AF <- data_analysis_dataframe_withdata_SCX_B[data_analysis_dataframe_withdata_SCX_B$Disease_status == "AF", ]
 data_analysis_dataframe_withdata_SCX_B_SR <- data_analysis_dataframe_withdata_SCX_B[data_analysis_dataframe_withdata_SCX_B$Disease_status == "SR", ]
-t_test_result <- t.test(data_analysis_dataframe_withdata_SCX_B_AF$RelEnrich_Norm_GAPDH_Input, data_analysis_dataframe_withdata_SCX_B_SR$RelEnrich_Norm_GAPDH_Input, alternative = "greater")
 
+data_analysis_dataframe_withdata_SCX_B_AF <- data_analysis_dataframe_withdata_SCX_B[data_analysis_dataframe_withdata_SCX_B$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_SCX_B_SR <- data_analysis_dataframe_withdata_SCX_B[data_analysis_dataframe_withdata_SCX_B$Disease_status == "SR", ]
+t_test_result <- t.test(data_analysis_dataframe_withdata_SCX_B_AF$RelEnrich_Norm_GAPDH_Input, data_analysis_dataframe_withdata_SCX_B_SR$RelEnrich_Norm_GAPDH_Input, alternative = "greater")
+t_test_result
 
 ChIPqPCR_SCX_B_GAPDHInputnorm <- ggplot(data_analysis_dataframe_withdata_SCX_B, 
                                         aes(x = factor(Disease_status, levels = c("AF", "SR")), 
@@ -1293,10 +1344,11 @@ ChIPqPCR_SCX_B_GAPDHInputnorm + geom_signif(
 
 data_analysis_dataframe_withdata_NPPB_AF008_AF <- data_analysis_dataframe_withdata_NPPB_AF008[data_analysis_dataframe_withdata_NPPB_AF008$Disease_status == "AF", ]
 data_analysis_dataframe_withdata_NPPB_AF008_SR <- data_analysis_dataframe_withdata_NPPB_AF008[data_analysis_dataframe_withdata_NPPB_AF008$Disease_status == "SR", ]
+
 t_test_result <- t.test(data_analysis_dataframe_withdata_NPPB_AF008_AF$RelEnrich_Norm_GAPDH_Input, data_analysis_dataframe_withdata_NPPB_AF008_SR$RelEnrich_Norm_GAPDH_Input, alternative = "greater")
+t_test_result
 
-
-ChIPqPCR_NPPB_AF008_GAPDHInputnorm <- ggplot(data_analysis_dataframe_withdata_NPPB_AF008,    # 📊 Figure 5c 
+ChIPqPCR_NPPB_AF008_GAPDHInputnorm <- ggplot(data_analysis_dataframe_withdata_NPPB_AF008,    
                                              aes(x = factor(Disease_status, levels = c("AF", "SR")), 
                                                  y = RelEnrich_Norm_GAPDH_Input)) +
   stat_summary(aes(fill = Disease_status), fun = mean, geom = "bar", colour = "black", width = 0.4) +
@@ -1344,7 +1396,7 @@ res_aov <- aov(RelEnrich_Norm_GAPDH_Input.1 ~ Disease_AnatSide,
 )
 summary(res_aov)
 
-data_analysis_dataframe_withdata_NPPB_AFLA0013_PLOT_GAPDHInputnorm <- ggplot(data_analysis_dataframe_withdata_NPPB_AFLA0013,    # 📊 Figures 5c
+data_analysis_dataframe_withdata_NPPB_AFLA0013_PLOT_GAPDHInputnorm <- ggplot(data_analysis_dataframe_withdata_NPPB_AFLA0013,    # 📊 Figure 5c
                                                                              aes(x = factor(Disease_AnatSide,level=c("AF-LA","AF-RA","SR-LA","SR-RA")), 
                                                                                  y = RelEnrich_Norm_GAPDH_Input.1)) +
   stat_summary(aes(fill = Disease_AnatSide), fun = mean, geom = "bar", colour = "black", width = 0.4) +
@@ -1372,14 +1424,7 @@ data_analysis_dataframe_withdata_NPPB_AFLA0013_PLOT_GAPDHInputnorm <- ggplot(dat
     axis.title.y = element_text(size = 14),
     axis.text.y = element_text(size = 14) 
   ) 
-ChIPqPCR_SCX_B_GAPDHInputnorm + geom_signif(
-  comparisons = list(c("AF", "SR")), 
-  map_signif_level = FALSE, 
-  step_increase = 0.1,     
-  textsize = 4  ,
-  y_position = 13, 
-  annotations = "p = 0.1484")
-
+data_analysis_dataframe_withdata_NPPB_AFLA0013_PLOT_GAPDHInputnorm
 
 
 #### Regions detected as SR-enriched in main cohort 
@@ -1387,8 +1432,9 @@ ChIPqPCR_SCX_B_GAPDHInputnorm + geom_signif(
 
 ### MT1X
 
-data_analysis_dataframe_withdata_MT1X_AF <- data_analysis_dataframe_withdata_NR2F1_B[data_analysis_dataframe_withdata_MT1X$Disease_status == "AF", ]
-data_analysis_dataframe_withdata_MT1X_SR <- data_analysis_dataframe_withdata_NR2F1_B[data_analysis_dataframe_withdata_MT1X$Disease_status == "SR", ]
+
+data_analysis_dataframe_withdata_MT1X_11_AF <- data_analysis_dataframe_withdata_MT1X_11[data_analysis_dataframe_withdata_MT1X_11$Disease_status == "AF", ]
+data_analysis_dataframe_withdata_MT1X_11_SR <- data_analysis_dataframe_withdata_MT1X_11[data_analysis_dataframe_withdata_MT1X_11$Disease_status == "SR", ]
 
 
 t_test_result <- t.test(data_analysis_dataframe_withdata_MT1X_11_AF$RelEnrich_Norm_GAPDH_Input, data_analysis_dataframe_withdata_MT1X_11_SR$RelEnrich_Norm_GAPDH_Input, alternative = "less")
@@ -1427,6 +1473,7 @@ ChIPqPCR_MT1X_GAPDHInputnorm <- ggplot(data_analysis_dataframe_withdata_MT1X_11,
     y_position = 0.24, # Adjust text size
     annotations = "p = 0.02019"
   )
+ChIPqPCR_MT1X_GAPDHInputnorm
 
 
 

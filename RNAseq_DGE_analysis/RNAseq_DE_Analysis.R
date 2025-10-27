@@ -43,11 +43,12 @@ STAR_BAM_files <- c("GSM3666571_SR_LA_Homo_sapiens.GRCh38_Male_SRR8714853-72_7_R
 
 
 count_matrix <- featureCounts(files=STAR_BAM_files, annot.ext ="Homo_sapiens.GRCh38.108.gtf", isGTFAnnotationFile = TRUE, isPairedEnd = TRUE, requireBothEndsMapped = TRUE, countMultiMappingReads = FALSE, allowMultiOverlap = FALSE)
+# Homo_sapiens.GRCh38.108.gtf downloaded from Ensembl
 
 save(count_matrix, file="count_matrix.RData")
 
 
-setwd("/Rodriguez_2025_AFepigenome/RNAseq_DGE_analysis/")
+setwd("Rodriguez_2025_AFepigenome/RNAseq_DGE_analysis/")
 
 load("count_matrix.RData")
 class(count_matrix)
@@ -340,7 +341,6 @@ LRRC32_expr_boxplot_doxplot <- ggplot(LRRC32_expr, aes(x = Disease_status, y = X
 LRRC32_expr_boxplot_doxplot +
   theme(axis.text.x = element_text(size = 14), axis.title.y = element_text(size = 14))+
   geom_signif(comparisons = list(c("AF", "SR")), map_signif_level=FALSE,annotations = c(" ") )
-
 # 📊 Figure 3c
 LRRC32_expr_boxplot_doxplot <- ggplot(LRRC32_expr, aes(x = Sample_type, y = X, fill = Sample_type))  +
   geom_boxplot(colour = "black", width=0.3, fill = "#F2FDFD")  +
@@ -354,7 +354,6 @@ LRRC32_expr_boxplot_doxplot +
   geom_signif(comparisons = list(c("AFLA", "AFRA")), map_signif_level=FALSE, y_position = 7700, annotations = c("n.s."), textsize = 5 )+
   geom_signif(comparisons = list(c("AFLA", "SRLA")), map_signif_level=FALSE,  y_position = 8000, annotations = c("***"), textsize = 5 ) +
   geom_signif(comparisons = list(c("AFLA", "SRRA")), map_signif_level=FALSE,  y_position = 8300, annotations = c("n.s"), textsize = 5 ) 
-
 
 
 ### SLC43A3
@@ -516,6 +515,7 @@ ANGPT1_expr_expr_boxplot_doxplot <- ggplot(ANGPT1_expr, aes(x = Disease_status, 
   theme_classic() + ggtitle("ANGPT1 expression") + 
   theme(plot.title = element_text(hjust = 0.5,face="bold",size =18)) 
 ANGPT1_expr_expr_boxplot_doxplot
+
 
 ### BLM
 # 📊 Figure 4

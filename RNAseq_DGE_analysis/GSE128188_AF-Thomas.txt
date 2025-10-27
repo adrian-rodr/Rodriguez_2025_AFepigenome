@@ -1,0 +1,21 @@
+# This spread sheet is for tracking sequencing libraries and aligning them in QMUL apocrita cluster 											
+Sort	Experiment	AssayType	SubmissionID_Series_GSE	LibraryID_Run_SRR	Genome	Strain	Tissue	TissueProcessing	Individual	Sex	Factor_Condition
+1	GSM3666571	RNA-Seq	GSE128188	SRR8714853-72	Homo_sapiens.GRCh38	Homo_sapiens	LA	mRNA	7	Male	SR
+2	GSM3666572	RNA-Seq	GSE128188	SRR8714873-92	Homo_sapiens.GRCh38	Homo_sapiens	RA	mRNA	7	Male	SR
+4	GSM3666574	RNA-Seq	GSE128188	SRR8714913-32	Homo_sapiens.GRCh38	Homo_sapiens	RA	mRNA	12b	Male	SR
+5	GSM3666575	RNA-Seq	GSE128188	SRR8714933-52	Homo_sapiens.GRCh38	Homo_sapiens	LA	mRNA	20	Male	SR
+6	GSM3666576	RNA-Seq	GSE128188	SRR8714953-72	Homo_sapiens.GRCh38	Homo_sapiens	RA	mRNA	20	Male	SR
+7	GSM3666577	RNA-Seq	GSE128188	SRR8714973-92	Homo_sapiens.GRCh38	Homo_sapiens	LA	mRNA	27	Male	SR
+8	GSM3666578	RNA-Seq	GSE128188	SRR8714993-5012	Homo_sapiens.GRCh38	Homo_sapiens	RA	mRNA	27	Male	SR
+9	GSM3666579	RNA-Seq	GSE128188	SRR8715013-32	Homo_sapiens.GRCh38	Homo_sapiens	LA	mRNA	30	Male	SR
+10	GSM3666580	RNA-Seq	GSE128188	SRR8715033-52	Homo_sapiens.GRCh38	Homo_sapiens	RA	mRNA	30	Male	AF
+11	GSM3666581	RNA-Seq	GSE128188	SRR8715053-72	Homo_sapiens.GRCh38	Homo_sapiens	LA	mRNA	5	Male	AF
+12	GSM3666582	RNA-Seq	GSE128188	SRR8715073-82	Homo_sapiens.GRCh38	Homo_sapiens	RA	mRNA	5	Male	AF
+13	GSM3666583	RNA-Seq	GSE128188	SRR8715093-122	Homo_sapiens.GRCh38	Homo_sapiens	LA	mRNA	14	Male	AF
+14	GSM3666584	RNA-Seq	GSE128188	SRR8715113-32	Homo_sapiens.GRCh38	Homo_sapiens	RA	mRNA	14	Male	AF
+15	GSM3666585	RNA-Seq	GSE128188	SRR8715133-52	Homo_sapiens.GRCh38	Homo_sapiens	LA	mRNA	25	Male	AF
+16	GSM3666586	RNA-Seq	GSE128188	SRR8715153-72	Homo_sapiens.GRCh38	Homo_sapiens	RA	mRNA	25	Male	AF
+17	GSM3666587	RNA-Seq	GSE128188	SRR8715173-92	Homo_sapiens.GRCh38	Homo_sapiens	LA	mRNA	28	Male	AF
+18	GSM3666588	RNA-Seq	GSE128188	SRR8715193-212	Homo_sapiens.GRCh38	Homo_sapiens	RA	mRNA	28	Male	AF
+19	GSM3666589	RNA-Seq	GSE128188	SRR8715213-32	Homo_sapiens.GRCh38	Homo_sapiens	LA	mRNA	31	Male	AF
+20	GSM3666590	RNA-Seq	GSE128188	SRR8715233-52	Homo_sapiens.GRCh38	Homo_sapiens	RA	mRNA	31	Male	AF
