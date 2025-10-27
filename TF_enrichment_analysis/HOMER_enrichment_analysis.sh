@@ -50,9 +50,9 @@ findMotifsGenome.pl SR_RA_enriched_nonoverlappingwithallsets_GenrichGreylistedFi
 #### DNAm data - Hypomethylated and hypermethylated DMRs
 
 # AF-hypermethylated
-findMotifsGenome.pl dmrs_dmrff_betanorm_Chris_DMRs_hypermeth_editedforHOMER.bed hg38 DMRs_hypermeth/ -size given -mask -bg dmrs_dmrff_betanorm_Chris_DMRs_HOMER.bed
+findMotifsGenome.pl dmrs_dmrff_betanorm_Chris_DMRs_hypermeth_editedforHOMER.bed hg38 DMRs_hypermeth/ -size given -mask -bg DMRs_Chris_allcandidateregionsbackground_HOMER.bed
 
 # AF-hypomethylated
-findMotifsGenome.pl dmrs_dmrff_betanorm_Chris_DMRs_hypometh_editedforHOMER.bed hg38 DMRs_hypometh/ -size given -mask -bg dmrs_dmrff_betanorm_Chris_DMRs_HOMER.bed
+findMotifsGenome.pl dmrs_dmrff_betanorm_Chris_DMRs_hypometh_editedforHOMER.bed hg38 DMRs_hypometh/ -size given -mask -bg DMRs_Chris_allcandidateregionsbackground_HOMER.bed
 
 
